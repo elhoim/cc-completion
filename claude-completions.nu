@@ -75,7 +75,7 @@ def "nu-complete claude tools" [] {
         Bash PowerShell REPL
         Read Write Edit NotebookEdit Glob Grep LSP
         WebFetch WebSearch
-        Agent Skill SendMessage Workflow ToolSearch
+        Agent ListAgents Skill SendMessage Workflow ToolSearch
         TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification
         EnterWorktree ExitWorktree
@@ -149,6 +149,9 @@ export extern claude [
     --file: string                                          # File resources (file_id:relative_path)
     --worktree(-w): string                                  # Git worktree
     --tmux                                                  # Tmux mode
+    --cloud: string                                         # Create a cloud session (description, session ID, or claude.ai/code URL)
+    --environment: string                                   # Create a cloud session on the given self-hosted environment (ccpool_...)
+    --teleport: string                                      # Resume a teleport session, optionally specify session ID
     --ax-screen-reader                                      # Render screen-reader friendly output (flat text, no decorative borders or animations)
     --bare                                                  # Minimal mode: skip hooks, LSP, and auto-discovery
     --safe-mode                                             # Start with all customizations disabled (troubleshooting)
@@ -315,6 +318,7 @@ export extern "claude plugin eval" [
     --keep-temp                                             # Preserve scaffold dirs for debugging
     --max-cost-usd: string                                  # Optional hard cost ceiling
     --model: string@"nu-complete claude models"             # Override model for all cases
+    --no-publish                                           # Keep the HTML report local only; skip publishing to claude.ai
     --no-scaffold                                          # Explicitly skip scaffold_script
     --output-dir: path                                      # Directory for aggregate-result.json
     --publish-report                                        # Publish the HTML report privately to claude.ai
@@ -331,6 +335,7 @@ export extern "claude plugin eval" [
 # Author an eval suite under evals/ via an interview
 export extern "claude plugin eval init" [
     --bare                                                 # Write a blank template instead of running the interview
+    --interactive(-i)                                      # Run the authoring interview (already the default in a terminal)
     --help(-h)
     name?: string                                           # Eval suite name
 ]
@@ -520,6 +525,7 @@ export extern "claude plugins eval" [
     --keep-temp                                             # Preserve scaffold dirs for debugging
     --max-cost-usd: string                                  # Optional hard cost ceiling
     --model: string@"nu-complete claude models"             # Override model for all cases
+    --no-publish                                           # Keep the HTML report local only; skip publishing to claude.ai
     --no-scaffold                                          # Explicitly skip scaffold_script
     --output-dir: path                                      # Directory for aggregate-result.json
     --publish-report                                        # Publish the HTML report privately to claude.ai
@@ -536,6 +542,7 @@ export extern "claude plugins eval" [
 # Author an eval suite under evals/ via an interview
 export extern "claude plugins eval init" [
     --bare                                                 # Write a blank template instead of running the interview
+    --interactive(-i)                                      # Run the authoring interview (already the default in a terminal)
     --help(-h)
     name?: string                                           # Eval suite name
 ]

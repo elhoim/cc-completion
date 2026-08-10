@@ -23,6 +23,7 @@ _claude_completion() {
         --ide --strict-mcp-config --session-id --agents --setting-sources
         --plugin-dir --plugin-url --disable-slash-commands --chrome --no-chrome
         --from-pr --file --worktree --tmux --remote-control --remote-control-session-name-prefix
+        --cloud --environment --teleport
         --ax-screen-reader --bare --brief --prompt-suggestions --safe-mode
         --autocompact --effort --version --help
         --bg --background
@@ -43,6 +44,7 @@ _claude_completion() {
         --agent --betas --name -n --plugin-url --remote-control-session-name-prefix
         -d --debug --from-pr -r --resume -w --worktree --remote-control
         --prompt-suggestions --autocompact
+        --cloud --environment --teleport
     "
 
     # Built-in tool names accepted by --tools / --allowedTools / --disallowedTools.
@@ -55,7 +57,7 @@ _claude_completion() {
         Bash PowerShell REPL
         Read Write Edit NotebookEdit Glob Grep LSP
         WebFetch WebSearch
-        Agent Skill SendMessage Workflow ToolSearch
+        Agent ListAgents Skill SendMessage Workflow ToolSearch
         TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification
         EnterWorktree ExitWorktree
@@ -94,6 +96,7 @@ _claude_completion() {
     local optional_value_flags="
         -d --debug --from-pr -r --resume -w --worktree
         --remote-control --prompt-suggestions --json
+        --cloud --teleport
     "
     local _ovf=" ${optional_value_flags//[$'\n\t']/ } "
     if [[ "$cur" == -* ]] && [[ $_ovf == *" $prev "* ]]; then
@@ -159,6 +162,7 @@ _claude_completion() {
         --json-schema|--system-prompt|--append-system-prompt|--agents|\
         --worktree|--max-budget-usd|--session-id|--debug|-d|--from-pr|\
         -r|--resume|--agent|--betas|--name|-n|--plugin-url|--remote-control|\
+        --cloud|--environment|--teleport|\
         --file)
             COMPREPLY=()
             return 0
@@ -386,7 +390,7 @@ _claude_completion() {
                     done
                     case "$eval_subcmd" in
                         init)
-                            COMPREPLY=($(compgen -W "--bare --help -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--bare --interactive --help -i -h" -- "$cur"))
                             ;;
                         *)
                             case "$prev" in
@@ -406,7 +410,7 @@ _claude_completion() {
                                     COMPREPLY=()
                                     ;;
                                 *)
-                                    COMPREPLY=($(compgen -W "init --ablation --allow-tools --case --json --judge-model --keep-temp --max-cost-usd --model --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --verbose --help -h" -- "$cur"))
+                                    COMPREPLY=($(compgen -W "init --ablation --allow-tools --case --json --judge-model --keep-temp --max-cost-usd --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --verbose --help -h" -- "$cur"))
                                     ;;
                             esac
                             ;;

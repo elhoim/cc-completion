@@ -258,8 +258,8 @@ claude --settings <TAB>
   - `details` - Show a plugin's component inventory and projected token cost
   - `disable` - Disable an enabled plugin (with `--all`, `--scope` options)
   - `enable` - Enable a disabled plugin (with `--scope` option)
-  - `eval` - Run eval cases against a plugin and report scored results (with `--ablation`, `--allow-tools`, `--case`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--model`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--verbose` options; `--json` optionally takes a `.json` output path)
-    - `init` - Author an eval suite under `evals/` via an interview (with `--bare` option)
+  - `eval` - Run eval cases against a plugin and report scored results (with `--ablation`, `--allow-tools`, `--case`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--verbose` options; `--json` optionally takes a `.json` output path)
+    - `init` - Author an eval suite under `evals/` via an interview (with `--bare`, `--interactive` options)
   - `init` (`new`) - Scaffold a new plugin (with `--author`, `--author-email`, `--description`, `--force`, `--with` options)
   - `install` (`i`) - Install a plugin from available marketplaces (with `--config`, `--scope` options)
   - `list` - List installed plugins (with `--available`, `--json` options)
@@ -293,6 +293,7 @@ All Claude Code CLI options are supported, including:
 - MCP: `--mcp-config`, `--strict-mcp-config`
 - File resources: `--file`
 - Worktree: `--worktree`, `--tmux`
+- Cloud sessions: `--cloud`, `--environment`, `--teleport`
 - Background agent: `--bg`, `--background`
 - Context management: `--autocompact`
 - Debugging: `--debug`, `--debug-file`

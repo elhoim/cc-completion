@@ -12,7 +12,7 @@ _claude_tools() {
     compadd -- Bash PowerShell REPL \
         Read Write Edit NotebookEdit Glob Grep LSP \
         WebFetch WebSearch \
-        Agent Skill SendMessage Workflow ToolSearch \
+        Agent ListAgents Skill SendMessage Workflow ToolSearch \
         TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate \
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification \
         EnterWorktree ExitWorktree \
@@ -97,6 +97,9 @@ _claude() {
         '--remote-control-session-name-prefix[Prefix for auto-generated Remote Control session names]:prefix:'
         '--from-pr[Resume session associated with a PR]::pr:'
         {-w,--worktree}'[Create a git worktree and start session]::name:'
+        '--cloud[Create a cloud session with the given description, or attach to an existing one by session ID or claude.ai/code URL]::description:'
+        '--environment[Create a new cloud session that runs on the given self-hosted environment (ccpool_...)]:environment_id:'
+        '--teleport[Resume a teleport session, optionally specify session ID]::session:'
         '--tmux[Create a tmux session for worktree]'
         '--ax-screen-reader[Render screen-reader friendly output (flat text, no decorative borders or animations)]'
         '--bare[Minimal mode: skip hooks, LSP, and auto-discovery]'
@@ -364,6 +367,7 @@ _claude() {
                                         '--keep-temp[Preserve scaffold dirs for debugging]' \
                                         '--max-cost-usd[Optional hard cost ceiling]:usd:' \
                                         '--model[Override model for all cases]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)' \
+                                        '--no-publish[Keep the HTML report local only; skip publishing it to claude.ai]' \
                                         '--no-scaffold[Explicitly skip scaffold_script]' \
                                         '--output-dir[Directory for aggregate-result.json]:dir:_files -/' \
                                         '--publish-report[Publish the HTML report privately to claude.ai]' \
@@ -385,6 +389,7 @@ _claude() {
                                                 init)
                                                     _arguments \
                                                         '--bare[Write a blank template instead of running the interview]' \
+                                                        {-i,--interactive}'[Run the authoring interview (already the default in a terminal)]' \
                                                         {-h,--help}'[Display help for command]' \
                                                         '1:name:'
                                                     ;;

@@ -258,8 +258,8 @@ claude --settings <TAB>
   - `details` - プラグインのコンポーネント一覧と推定トークンコストを表示
   - `disable` - 有効なプラグインを無効化 (`--all`, `--scope` オプション付き)
   - `enable` - 無効なプラグインを有効化 (`--scope` オプション付き)
-  - `eval` - プラグインに対して eval ケースを実行しスコア結果を報告 (`--ablation`, `--allow-tools`, `--case`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--model`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--verbose` オプション付き。`--json` は出力先の `.json` パスを任意で取る)
-    - `init` - インタビュー形式で `evals/` 配下に eval スイートを作成 (`--bare` オプション付き)
+  - `eval` - プラグインに対して eval ケースを実行しスコア結果を報告 (`--ablation`, `--allow-tools`, `--case`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--verbose` オプション付き。`--json` は出力先の `.json` パスを任意で取る)
+    - `init` - インタビュー形式で `evals/` 配下に eval スイートを作成 (`--bare`, `--interactive` オプション付き)
   - `init` (`new`) - 新しいプラグインの雛形を作成 (`--author`, `--author-email`, `--description`, `--force`, `--with` オプション付き)
   - `install` (`i`) - 利用可能なマーケットプレイスからプラグインをインストール (`--config`, `--scope` オプション付き)
   - `list` - インストール済みのプラグインを一覧表示 (`--available`, `--json` オプション付き)
@@ -293,6 +293,7 @@ claude --settings <TAB>
 - MCP: `--mcp-config`, `--strict-mcp-config`
 - ファイルリソース: `--file`
 - ワークツリー: `--worktree`, `--tmux`
+- クラウドセッション: `--cloud`, `--environment`, `--teleport`
 - バックグラウンドエージェント: `--bg`, `--background`
 - コンテキスト管理: `--autocompact`
 - デバッグ: `--debug`, `--debug-file`
