@@ -59,9 +59,9 @@ _claude_completion() {
         WebFetch WebSearch
         Agent ListAgents Skill SendMessage Workflow ToolSearch
         TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate
-        Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification
+        Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications
         EnterWorktree ExitWorktree
-        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings
+        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
         Artifact ClaudeDesign DesignSync Projects
@@ -425,7 +425,7 @@ _claude_completion() {
                             COMPREPLY=()
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--config --scope --help -s -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--config --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;
@@ -491,7 +491,7 @@ _claude_completion() {
                             COMPREPLY=($(compgen -W "user project local managed" -- "$cur"))
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--scope --help -s -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;
@@ -569,7 +569,7 @@ _claude_completion() {
                     COMPREPLY=()
                     ;;
                 *)
-                    COMPREPLY=($(compgen -W "--json --timeout --help -h" -- "$cur"))
+                    COMPREPLY=($(compgen -W "--json --no-post --post --timeout --help -h" -- "$cur"))
                     ;;
             esac
             ;;

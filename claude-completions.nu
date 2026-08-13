@@ -77,9 +77,9 @@ def "nu-complete claude tools" [] {
         WebFetch WebSearch
         Agent ListAgents Skill SendMessage Workflow ToolSearch
         TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate
-        Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification
+        Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications
         EnterWorktree ExitWorktree
-        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings
+        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
         Artifact ClaudeDesign DesignSync Projects
@@ -366,6 +366,7 @@ export extern "claude plugin new" [
 export extern "claude plugin install" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --scope(-s): string@"nu-complete claude scope"
+    --yes(-y)                                               # Accept a marketplace-declared install command without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -439,6 +440,7 @@ export extern "claude plugin autoremove" [
 # Update a plugin to the latest version
 export extern "claude plugin update" [
     --scope(-s): string@"nu-complete claude scope-with-managed"
+    --yes(-y)                                               # Accept a changed marketplace-declared command without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -465,6 +467,7 @@ export extern "claude plugin tag" [
 export extern "claude plugin i" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --scope(-s): string@"nu-complete claude scope"
+    --yes(-y)                                               # Accept a marketplace-declared install command without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -573,6 +576,7 @@ export extern "claude plugins new" [
 export extern "claude plugins install" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --scope(-s): string@"nu-complete claude scope"
+    --yes(-y)                                               # Accept a marketplace-declared install command without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -646,6 +650,7 @@ export extern "claude plugins autoremove" [
 # Update a plugin to the latest version
 export extern "claude plugins update" [
     --scope(-s): string@"nu-complete claude scope-with-managed"
+    --yes(-y)                                               # Accept a changed marketplace-declared command without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -672,6 +677,7 @@ export extern "claude plugins tag" [
 export extern "claude plugins i" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --scope(-s): string@"nu-complete claude scope"
+    --yes(-y)                                               # Accept a marketplace-declared install command without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -822,6 +828,8 @@ export extern "claude auto-mode reset" [
 # Run a cloud-hosted multi-agent code review of the current branch (or a PR number / base branch)
 export extern "claude ultrareview" [
     --json                                                  # Print the raw bugs.json payload instead of formatted findings
+    --no-post                                               # Do not post the findings to the PR (the default)
+    --post                                                  # Post the finished review's findings to the PR as you (PR targets only)
     --timeout: int                                          # Maximum minutes to wait for the review to finish (default: 30)
     --help(-h)
     target?: string                                         # PR number, branch, or other target

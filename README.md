@@ -261,13 +261,13 @@ claude --settings <TAB>
   - `eval` - Run eval cases against a plugin and report scored results (with `--ablation`, `--allow-tools`, `--case`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--verbose` options; `--json` optionally takes a `.json` output path)
     - `init` - Author an eval suite under `evals/` via an interview (with `--bare`, `--interactive` options)
   - `init` (`new`) - Scaffold a new plugin (with `--author`, `--author-email`, `--description`, `--force`, `--with` options)
-  - `install` (`i`) - Install a plugin from available marketplaces (with `--config`, `--scope` options)
+  - `install` (`i`) - Install a plugin from available marketplaces (with `--config`, `--scope`, `--yes` options)
   - `list` - List installed plugins (with `--available`, `--json` options)
   - `marketplace` - Manage Claude Code marketplaces (`add`, `list`, `remove` (`rm`), `update`); `add` supports `--scope`, `--sparse`; `list` supports `--json`; `remove`/`rm` support `--scope`
   - `prune` (`autoremove`) - Remove auto-installed dependencies that are no longer needed (with `--dry-run`, `--scope`, `--yes` options)
   - `tag` - Create a `{name}--v{version}` git tag for a plugin release (with `--dry-run`, `--force`, `--message`, `--push`, `--remote` options)
   - `uninstall` (`remove`) - Uninstall an installed plugin (with `--keep-data`, `--prune`, `--scope`, `--yes` options)
-  - `update` - Update a plugin to the latest version (with `--scope` option)
+  - `update` - Update a plugin to the latest version (with `--scope`, `--yes` options)
   - `validate` - Validate a plugin or marketplace manifest (with `--strict` option)
 - `project` - Manage Claude Code project state
   - `purge` - Delete all Claude Code state for a project (transcripts, tasks, file history, config entry) (with `--all`, `--dry-run`, `--interactive`, `--yes` options)
@@ -279,7 +279,7 @@ claude --settings <TAB>
 - `plugins` - Alias for `plugin`
 - `upgrade` - Alias for `update`
 - `install` - Install Claude Code native build (with `--force` option)
-- `ultrareview` - Run a cloud-hosted multi-agent code review of the current branch (or a PR number / base branch) (with `--json`, `--timeout` options)
+- `ultrareview` - Run a cloud-hosted multi-agent code review of the current branch (or a PR number / base branch) (with `--json`, `--post`, `--no-post`, `--timeout` options)
 
 ## Supported Options
 

@@ -14,9 +14,9 @@ _claude_tools() {
         WebFetch WebSearch \
         Agent ListAgents Skill SendMessage Workflow ToolSearch \
         TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate \
-        Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification \
+        Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications \
         EnterWorktree ExitWorktree \
-        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings \
+        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal \
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools \
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors \
         Artifact ClaudeDesign DesignSync Projects \
@@ -421,6 +421,7 @@ _claude() {
                                     _arguments \
                                         '--config[Set a userConfig option from the plugin manifest (repeatable)]:key=value:' \
                                         {-s,--scope}'[Configuration scope]:scope:(user project local)' \
+                                        {-y,--yes}'[Accept a marketplace-declared install command without the confirmation prompt]' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
                                 init|new)
@@ -468,6 +469,7 @@ _claude() {
                                 update)
                                     _arguments \
                                         {-s,--scope}'[Configuration scope]:scope:(user project local managed)' \
+                                        {-y,--yes}'[Accept a changed marketplace-declared command without the confirmation prompt]' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
                                 *)
@@ -580,6 +582,8 @@ _claude() {
                 ultrareview)
                     _arguments \
                         '--json[Print the raw bugs.json payload instead of formatted findings]' \
+                        '--no-post[Do not post the findings to the PR (the default)]' \
+                        '--post[Post the finished review'\''s findings to the PR as you (PR targets only)]' \
                         '--timeout[Maximum minutes to wait for the review to finish]:minutes:' \
                         {-h,--help}'[Display help for command]'
                     ;;
