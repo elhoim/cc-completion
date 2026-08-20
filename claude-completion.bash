@@ -390,7 +390,14 @@ _claude_completion() {
                     done
                     case "$eval_subcmd" in
                         init)
-                            COMPREPLY=($(compgen -W "--bare --interactive --help -i -h" -- "$cur"))
+                            case "$prev" in
+                                --eval-dir)
+                                    _filedir -d
+                                    ;;
+                                *)
+                                    COMPREPLY=($(compgen -W "--bare --eval-dir --interactive --help -i -h" -- "$cur"))
+                                    ;;
+                            esac
                             ;;
                         *)
                             case "$prev" in
@@ -400,7 +407,7 @@ _claude_completion() {
                                 --model|--judge-model)
                                     COMPREPLY=($(compgen -W "sonnet opus haiku fable best sonnet[1m] opus[1m] fable[1m] opusplan" -- "$cur"))
                                     ;;
-                                --output-dir)
+                                --output-dir|--eval-dir)
                                     _filedir -d
                                     ;;
                                 --json|--report)
@@ -410,7 +417,7 @@ _claude_completion() {
                                     COMPREPLY=()
                                     ;;
                                 *)
-                                    COMPREPLY=($(compgen -W "init --ablation --allow-tools --case --json --judge-model --keep-temp --max-cost-usd --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --verbose --help -h" -- "$cur"))
+                                    COMPREPLY=($(compgen -W "init --ablation --allow-tools --case --eval-dir --json --judge-model --keep-temp --max-cost-usd --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --verbose --help -h" -- "$cur"))
                                     ;;
                             esac
                             ;;

@@ -140,7 +140,7 @@ export extern claude [
     --setting-sources: string@"nu-complete claude scope"    # Setting sources
     --plugin-dir: path                                      # Plugin directory
     --plugin-url: string                                    # Fetch a plugin .zip from a URL for this session only
-    --disable-slash-commands                                 # Disable slash commands
+    --disable-slash-commands                                 # Disable all skills
     --chrome                                                # Enable Chrome
     --no-chrome                                             # Disable Chrome
     --background                                            # Start the session as a background agent
@@ -313,6 +313,7 @@ export extern "claude plugin eval" [
     --ablation: string@"nu-complete claude eval-ablation"   # Run a no-plugin baseline arm and report the score delta
     --allow-tools: string@"nu-complete claude tools"        # Operator grant for gated tools (repeatable)
     --case: string                                          # Filter cases by name glob
+    --eval-dir: path                                        # Directory (below the plugin) that holds the eval cases
     --json                                                  # Print the full run result as JSON to stdout
     --judge-model: string@"nu-complete claude models"       # Override LLM-grader model (default: haiku)
     --keep-temp                                             # Preserve scaffold dirs for debugging
@@ -321,20 +322,21 @@ export extern "claude plugin eval" [
     --no-publish                                           # Keep the HTML report local only; skip publishing to claude.ai
     --no-scaffold                                          # Explicitly skip scaffold_script
     --output-dir: path                                      # Directory for aggregate-result.json
-    --publish-report                                        # Publish the HTML report privately to claude.ai
+    --publish-report                                        # Also require publishing the report to claude.ai (already the default)
     --report: path                                          # Write a self-contained HTML report
     --runs: int                                             # Override per-case runs (default: case.runs ?? 3)
     --scaffold                                             # Run each case's scaffold_script
     --tag: string                                          # Filter cases by tag (repeatable)
     --threshold: string                                     # Exit 1 if any case score is below this threshold
-    --verbose                                              # Stream the trace as it runs
+    --verbose                                              # Log per-message trace events to the debug log
     --help(-h)
     target?: string                                         # Path, plugin name, or plugin@marketplace id
 ]
 
-# Author an eval suite under evals/ via an interview
+# Author an eval suite under the eval dir via an interview
 export extern "claude plugin eval init" [
     --bare                                                 # Write a blank template instead of running the interview
+    --eval-dir: path                                        # Directory to write cases into
     --interactive(-i)                                      # Run the authoring interview (already the default in a terminal)
     --help(-h)
     name?: string                                           # Eval suite name
@@ -523,6 +525,7 @@ export extern "claude plugins eval" [
     --ablation: string@"nu-complete claude eval-ablation"   # Run a no-plugin baseline arm and report the score delta
     --allow-tools: string@"nu-complete claude tools"        # Operator grant for gated tools (repeatable)
     --case: string                                          # Filter cases by name glob
+    --eval-dir: path                                        # Directory (below the plugin) that holds the eval cases
     --json                                                  # Print the full run result as JSON to stdout
     --judge-model: string@"nu-complete claude models"       # Override LLM-grader model (default: haiku)
     --keep-temp                                             # Preserve scaffold dirs for debugging
@@ -531,20 +534,21 @@ export extern "claude plugins eval" [
     --no-publish                                           # Keep the HTML report local only; skip publishing to claude.ai
     --no-scaffold                                          # Explicitly skip scaffold_script
     --output-dir: path                                      # Directory for aggregate-result.json
-    --publish-report                                        # Publish the HTML report privately to claude.ai
+    --publish-report                                        # Also require publishing the report to claude.ai (already the default)
     --report: path                                          # Write a self-contained HTML report
     --runs: int                                             # Override per-case runs (default: case.runs ?? 3)
     --scaffold                                             # Run each case's scaffold_script
     --tag: string                                          # Filter cases by tag (repeatable)
     --threshold: string                                     # Exit 1 if any case score is below this threshold
-    --verbose                                              # Stream the trace as it runs
+    --verbose                                              # Log per-message trace events to the debug log
     --help(-h)
     target?: string                                         # Path, plugin name, or plugin@marketplace id
 ]
 
-# Author an eval suite under evals/ via an interview
+# Author an eval suite under the eval dir via an interview
 export extern "claude plugins eval init" [
     --bare                                                 # Write a blank template instead of running the interview
+    --eval-dir: path                                        # Directory to write cases into
     --interactive(-i)                                      # Run the authoring interview (already the default in a terminal)
     --help(-h)
     name?: string                                           # Eval suite name
