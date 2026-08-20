@@ -358,27 +358,31 @@ _claude() {
                                     eval_commands=(
                                         'init:Author an eval suite under the eval dir via an interview'
                                     )
+                                    local -a eval_opts
+                                    eval_opts=(
+                                        '--ablation[Run a no-plugin baseline arm and report the score delta]:mode:(none with-without)'
+                                        '*--allow-tools[Operator grant for gated tools]:tools:_claude_tools'
+                                        '--case[Filter cases by name glob]:glob:'
+                                        '--eval-dir[Directory (below the plugin) that holds the eval cases]:dir:_files -/'
+                                        '--json[Print the full run result as JSON to stdout, or write it to this .json file]::path:_files'
+                                        '--judge-model[Override LLM-grader model]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)'
+                                        '--keep-temp[Preserve scaffold dirs for debugging]'
+                                        '--max-cost-usd[Optional hard cost ceiling]:usd:'
+                                        '--model[Override model for all cases]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)'
+                                        '--no-publish[Keep the HTML report local only; skip publishing it to claude.ai]'
+                                        '--no-scaffold[Explicitly skip scaffold_script]'
+                                        '--output-dir[Directory for aggregate-result.json]:dir:_files -/'
+                                        '--publish-report[Also require publishing the report to claude.ai (already the default)]'
+                                        '--report[Write a self-contained HTML report]:path:_files'
+                                        '--runs[Override per-case runs]:n:'
+                                        '--scaffold[Run each case'\''s scaffold_script]'
+                                        '*--tag[Filter cases by tag (repeatable)]:tag:'
+                                        '--threshold[Exit 1 if any case score is below this threshold]:threshold:'
+                                        '--verbose[Log per-message trace events to the debug log]'
+                                        {-h,--help}'[Display help for command]'
+                                    )
                                     _arguments -C \
-                                        '--ablation[Run a no-plugin baseline arm and report the score delta]:mode:(none with-without)' \
-                                        '*--allow-tools[Operator grant for gated tools]:tools:_claude_tools' \
-                                        '--case[Filter cases by name glob]:glob:' \
-                                        '--eval-dir[Directory (below the plugin) that holds the eval cases]:dir:_files -/' \
-                                        '--json[Print the full run result as JSON to stdout, or write it to this .json file]::path:_files' \
-                                        '--judge-model[Override LLM-grader model]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)' \
-                                        '--keep-temp[Preserve scaffold dirs for debugging]' \
-                                        '--max-cost-usd[Optional hard cost ceiling]:usd:' \
-                                        '--model[Override model for all cases]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)' \
-                                        '--no-publish[Keep the HTML report local only; skip publishing it to claude.ai]' \
-                                        '--no-scaffold[Explicitly skip scaffold_script]' \
-                                        '--output-dir[Directory for aggregate-result.json]:dir:_files -/' \
-                                        '--publish-report[Also require publishing the report to claude.ai (already the default)]' \
-                                        '--report[Write a self-contained HTML report]:path:_files' \
-                                        '--runs[Override per-case runs]:n:' \
-                                        '--scaffold[Run each case'\''s scaffold_script]' \
-                                        '*--tag[Filter cases by tag (repeatable)]:tag:' \
-                                        '--threshold[Exit 1 if any case score is below this threshold]:threshold:' \
-                                        '--verbose[Log per-message trace events to the debug log]' \
-                                        {-h,--help}'[Display help for command]' \
+                                        $eval_opts \
                                         '1: :->eval_cmd' \
                                         '*:: :->eval_args'
                                     case $state in
@@ -394,6 +398,12 @@ _claude() {
                                                         {-i,--interactive}'[Run the authoring interview (already the default in a terminal)]' \
                                                         {-h,--help}'[Display help for command]' \
                                                         '1:name:'
+                                                    ;;
+                                                *)
+                                                    # The first positional was a target (path / plugin name /
+                                                    # plugin@marketplace), not the `init` subcommand: keep
+                                                    # offering eval's own options after it.
+                                                    _arguments $eval_opts
                                                     ;;
                                             esac
                                             ;;

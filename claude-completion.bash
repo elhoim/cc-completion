@@ -381,12 +381,24 @@ _claude_completion() {
                     esac
                     ;;
                 eval)
+                    # Options that consume the next token as a value. Skipped so
+                    # `claude plugin eval --eval-dir cases init` finds `init`
+                    # rather than mistaking the value `cases` for the subcommand.
+                    local eval_value_flags="
+                        --ablation --allow-tools --case --eval-dir --json --judge-model
+                        --max-cost-usd --model --output-dir --report --runs --tag --threshold
+                    "
+                    local _evf=" ${eval_value_flags//[$'\n\t']/ } "
                     local eval_subcmd
                     for ((i=psub_idx+1; i < cword; i++)); do
-                        if [[ ${words[i]} != -* ]]; then
-                            eval_subcmd=${words[i]}
-                            break
+                        if [[ ${words[i]} == -* ]]; then
+                            if [[ $_evf == *" ${words[i]} "* ]] && [[ ${words[i+1]:-} != -* ]]; then
+                                ((++i))
+                            fi
+                            continue
                         fi
+                        eval_subcmd=${words[i]}
+                        break
                     done
                     case "$eval_subcmd" in
                         init)
