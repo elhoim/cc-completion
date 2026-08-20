@@ -77,7 +77,7 @@ def "nu-complete claude tools" [] {
         WebFetch WebSearch
         Agent ListAgents Skill SendMessage Workflow ToolSearch
         TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate
-        Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications
+        Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications Poll
         EnterWorktree ExitWorktree
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
