@@ -432,7 +432,7 @@ _claude() {
                                 install|i)
                                     _arguments \
                                         '--config[Set a userConfig option from the plugin manifest (repeatable)]:key=value:' \
-                                        {-s,--scope}'[Configuration scope]:scope:(user project local)' \
+                                        {-s,--scope}'[Installation scope]:scope:(user project local)' \
                                         {-y,--yes}'[Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt]' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
@@ -455,19 +455,19 @@ _claude() {
                                 disable)
                                     _arguments \
                                         {-a,--all}'[Disable all enabled plugins]' \
-                                        {-s,--scope}'[Configuration scope]:scope:(user project local)' \
+                                        {-s,--scope}'[Installation scope]:scope:(user project local)' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
                                 enable)
                                     _arguments \
-                                        {-s,--scope}'[Configuration scope]:scope:(user project local)' \
+                                        {-s,--scope}'[Installation scope]:scope:(user project local)' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
                                 uninstall|remove)
                                     _arguments \
                                         '--keep-data[Preserve plugin persistent data]' \
                                         '--prune[Also remove auto-installed dependencies that are no longer needed]' \
-                                        {-s,--scope}'[Configuration scope]:scope:(user project local)' \
+                                        {-s,--scope}'[Uninstall from scope]:scope:(user project local)' \
                                         {-y,--yes}'[Skip the --prune confirmation prompt]' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
@@ -480,7 +480,7 @@ _claude() {
                                     ;;
                                 update)
                                     _arguments \
-                                        {-s,--scope}'[Configuration scope]:scope:(user project local managed)' \
+                                        {-s,--scope}'[Installation scope]:scope:(user project local managed)' \
                                         {-y,--yes}'[Accept the displayed marketplace-declared command (changed install or headersHelper) without the confirmation prompt]' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
