@@ -368,7 +368,7 @@ export extern "claude plugin new" [
 export extern "claude plugin install" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --scope(-s): string@"nu-complete claude scope"
-    --yes(-y)                                               # Accept a marketplace-declared install command without the confirmation prompt
+    --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -442,7 +442,7 @@ export extern "claude plugin autoremove" [
 # Update a plugin to the latest version
 export extern "claude plugin update" [
     --scope(-s): string@"nu-complete claude scope-with-managed"
-    --yes(-y)                                               # Accept a changed marketplace-declared command without the confirmation prompt
+    --yes(-y)                                               # Accept the displayed marketplace-declared command (changed install or headersHelper) without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -469,7 +469,7 @@ export extern "claude plugin tag" [
 export extern "claude plugin i" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --scope(-s): string@"nu-complete claude scope"
-    --yes(-y)                                               # Accept a marketplace-declared install command without the confirmation prompt
+    --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -580,7 +580,7 @@ export extern "claude plugins new" [
 export extern "claude plugins install" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --scope(-s): string@"nu-complete claude scope"
-    --yes(-y)                                               # Accept a marketplace-declared install command without the confirmation prompt
+    --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -654,7 +654,7 @@ export extern "claude plugins autoremove" [
 # Update a plugin to the latest version
 export extern "claude plugins update" [
     --scope(-s): string@"nu-complete claude scope-with-managed"
-    --yes(-y)                                               # Accept a changed marketplace-declared command without the confirmation prompt
+    --yes(-y)                                               # Accept the displayed marketplace-declared command (changed install or headersHelper) without the confirmation prompt
     --help(-h)
     ...args: string
 ]
@@ -681,7 +681,7 @@ export extern "claude plugins tag" [
 export extern "claude plugins i" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --scope(-s): string@"nu-complete claude scope"
-    --yes(-y)                                               # Accept a marketplace-declared install command without the confirmation prompt
+    --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
     ...args: string
 ]
