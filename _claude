@@ -368,6 +368,7 @@ _claude() {
                                         '--judge-model[Override LLM-grader model]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)'
                                         '--keep-temp[Preserve scaffold dirs for debugging]'
                                         '--max-cost-usd[Optional hard cost ceiling]:usd:'
+                                        '--mocks[Mock stand-ins for MCP servers, from the eval dir mocks/]:mode:(record off)'
                                         '--model[Override model for all cases]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)'
                                         '--no-publish[Keep the HTML report local only; skip publishing it to claude.ai]'
                                         '--no-scaffold[Explicitly skip scaffold_script]'

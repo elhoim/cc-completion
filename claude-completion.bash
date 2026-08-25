@@ -386,7 +386,7 @@ _claude_completion() {
                     # rather than mistaking the value `cases` for the subcommand.
                     local eval_value_flags="
                         --ablation --allow-tools --case --eval-dir --json --judge-model
-                        --max-cost-usd --model --output-dir --report --runs --tag --threshold
+                        --max-cost-usd --mocks --model --output-dir --report --runs --tag --threshold
                     "
                     local _evf=" ${eval_value_flags//[$'\n\t']/ } "
                     local eval_subcmd
@@ -416,6 +416,9 @@ _claude_completion() {
                                 --ablation)
                                     COMPREPLY=($(compgen -W "none with-without" -- "$cur"))
                                     ;;
+                                --mocks)
+                                    COMPREPLY=($(compgen -W "record off" -- "$cur"))
+                                    ;;
                                 --model|--judge-model)
                                     COMPREPLY=($(compgen -W "sonnet opus haiku fable best sonnet[1m] opus[1m] fable[1m] opusplan" -- "$cur"))
                                     ;;
@@ -429,7 +432,7 @@ _claude_completion() {
                                     COMPREPLY=()
                                     ;;
                                 *)
-                                    COMPREPLY=($(compgen -W "init --ablation --allow-tools --case --eval-dir --json --judge-model --keep-temp --max-cost-usd --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --verbose --help -h" -- "$cur"))
+                                    COMPREPLY=($(compgen -W "init --ablation --allow-tools --case --eval-dir --json --judge-model --keep-temp --max-cost-usd --mocks --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --verbose --help -h" -- "$cur"))
                                     ;;
                             esac
                             ;;

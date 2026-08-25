@@ -21,6 +21,10 @@ def "nu-complete claude eval-ablation" [] {
     [none with-without]
 }
 
+def "nu-complete claude eval-mocks" [] {
+    [record off]
+}
+
 def "nu-complete claude models" [] {
     [sonnet opus haiku fable best "sonnet[1m]" "opus[1m]" "fable[1m]" opusplan]
 }
@@ -318,6 +322,7 @@ export extern "claude plugin eval" [
     --judge-model: string@"nu-complete claude models"       # Override LLM-grader model (default: haiku)
     --keep-temp                                             # Preserve scaffold dirs for debugging
     --max-cost-usd: string                                  # Optional hard cost ceiling
+    --mocks: string@"nu-complete claude eval-mocks"         # Mock stand-ins for MCP servers, from the eval dir mocks/
     --model: string@"nu-complete claude models"             # Override model for all cases
     --no-publish                                           # Keep the HTML report local only; skip publishing to claude.ai
     --no-scaffold                                          # Explicitly skip scaffold_script
@@ -530,6 +535,7 @@ export extern "claude plugins eval" [
     --judge-model: string@"nu-complete claude models"       # Override LLM-grader model (default: haiku)
     --keep-temp                                             # Preserve scaffold dirs for debugging
     --max-cost-usd: string                                  # Optional hard cost ceiling
+    --mocks: string@"nu-complete claude eval-mocks"         # Mock stand-ins for MCP servers, from the eval dir mocks/
     --model: string@"nu-complete claude models"             # Override model for all cases
     --no-publish                                           # Keep the HTML report local only; skip publishing to claude.ai
     --no-scaffold                                          # Explicitly skip scaffold_script
