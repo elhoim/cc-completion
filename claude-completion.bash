@@ -7,7 +7,7 @@ _claude_completion() {
     _init_completion || return
 
     # Commands
-    local commands="agents auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview"
+    local commands="agents attach logs stop kill rm respawn auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview"
 
     # Global options
     local global_opts="
@@ -25,6 +25,7 @@ _claude_completion() {
         --from-pr --file --worktree --tmux --remote-control --remote-control-session-name-prefix
         --cloud --environment --teleport
         --ax-screen-reader --bare --brief --prompt-suggestions --safe-mode
+        --restricted
         --autocompact --effort --version --help
         --bg --background
         --name
@@ -610,9 +611,19 @@ _claude_completion() {
                     _filedir -d
                     ;;
                 *)
-                    COMPREPLY=($(compgen -W "--add-dir --agent --all --allow-dangerously-skip-permissions --cwd --dangerously-skip-permissions --effort --json --mcp-config --model --permission-mode --plugin-dir --setting-sources --settings --strict-mcp-config --help -h" -- "$cur"))
+                    COMPREPLY=($(compgen -W "--add-dir --agent --all --allow-dangerously-skip-permissions --cwd --dangerously-skip-permissions --effort --json --mcp-config --model --permission-mode --plugin-dir --restricted --setting-sources --settings --strict-mcp-config --help -h" -- "$cur"))
                     ;;
             esac
+            ;;
+        # Background session commands. Their `--help` output is a hand-written
+        # usage line with no `Options:` section, so the only flag any of them
+        # documents is `respawn --all` -- not even -h/--help. <id> is the short
+        # id `claude --bg` prints; it is runtime state, so no candidates.
+        attach|logs|stop|kill|rm)
+            COMPREPLY=()
+            ;;
+        respawn)
+            COMPREPLY=($(compgen -W "--all" -- "$cur"))
             ;;
         auto-mode)
             local automode_cmds="config critique defaults reset"

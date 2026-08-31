@@ -31,6 +31,12 @@ _claude() {
 
     commands=(
         'agents:Manage background agents'
+        'attach:Open a background session in this terminal'
+        'logs:Print the recent terminal output of a background session'
+        'stop:Stop a background session, keeping its conversation'
+        'kill:Stop a background session, keeping its conversation'
+        'rm:Delete a background session, and its worktree when that is safe'
+        'respawn:Restart a background session so it runs the current Claude Code version'
         'auth:Manage authentication'
         'mcp:Configure and manage MCP servers'
         'plugin:Manage Claude Code plugins'
@@ -104,6 +110,7 @@ _claude() {
         '--ax-screen-reader[Render screen-reader friendly output (flat text, no decorative borders or animations)]'
         '--bare[Minimal mode: skip hooks, LSP, and auto-discovery]'
         '--safe-mode[Start with all customizations disabled — useful for troubleshooting]'
+        '--restricted[Restricted mode: drop the code-running tools and WebFetch, ignore user/project/local settings, confine file tools to the working directories]'
         '--brief[Enable SendUserMessage tool for agent-to-user communication]'
         '--prompt-suggestions[Enable prompt suggestions]::enabled:(true false 1 0 yes no on off)'
         '--autocompact[Auto-compact window size (auto, or 100k-1M tokens)]:window:->autocompact'
@@ -153,10 +160,23 @@ _claude() {
                         '--model[Default model for dispatched sessions]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)' \
                         '--permission-mode[Default permission mode for dispatched sessions]:mode:(acceptEdits bypassPermissions manual dontAsk plan auto)' \
                         '*--plugin-dir[Load plugins from specified directory for dispatched sessions]:path:_files' \
+                        '--restricted[Start dispatched sessions in restricted mode]' \
                         '--setting-sources[Comma-separated list of setting sources]:sources:(user project local)' \
                         '--settings[Settings file or JSON string to apply]:file:_files' \
                         '--strict-mcp-config[Only use MCP servers from --mcp-config in dispatched sessions]' \
                         {-h,--help}'[Display help for command]'
+                    ;;
+                # Background session commands. Their `--help` is a hand-written
+                # usage line with no `Options:` section, so `respawn --all` is
+                # the only flag any of them documents. <id> is the short id
+                # `claude --bg` prints -- runtime state, so no action here.
+                attach|logs|stop|kill|rm)
+                    _arguments '1:session id:'
+                    ;;
+                respawn)
+                    _arguments \
+                        '--all[Restart every background session]' \
+                        '1:session id:'
                     ;;
                 auth)
                     local -a auth_commands

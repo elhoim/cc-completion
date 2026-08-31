@@ -6,7 +6,7 @@
 
 ## 機能
 
-- **コマンド補完**: `claude` のサブコマンドをタブ補完 (`agents`, `auto-mode`, `auth`, `mcp`, `plugin`, `plugins`, `setup-token`, `doctor`, `gateway`, `import`, `update`, `upgrade`, `install`, `ultrareview`)
+- **コマンド補完**: `claude` のサブコマンドをタブ補完 (`agents`, `attach`, `logs`, `stop`, `kill`, `rm`, `respawn`, `auto-mode`, `auth`, `mcp`, `plugin`, `plugins`, `setup-token`, `doctor`, `gateway`, `import`, `update`, `upgrade`, `install`, `ultrareview`)
 - **オプション補完**: すべての CLI オプションとフラグを補完可能
 - **コンテキストに応じた候補表示**: 該当する場合、オプションの値を候補として表示
   - 出力フォーマット: `text`, `json`, `stream-json`
@@ -172,7 +172,7 @@ use /path/to/cc-completion/claude-completions.nu *
 ```bash
 # サブコマンドの補完
 claude <TAB>
-# 表示: agents auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview
+# 表示: agents attach logs stop kill rm respawn auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview
 
 # オプションの補完
 claude --<TAB>
@@ -233,7 +233,12 @@ claude --settings <TAB>
 
 ## 対応コマンド
 
-- `agents` - バックグラウンドエージェントを管理 (`--add-dir`, `--agent`, `--all`, `--allow-dangerously-skip-permissions`, `--cwd`, `--dangerously-skip-permissions`, `--effort`, `--json`, `--mcp-config`, `--model`, `--permission-mode`, `--plugin-dir`, `--setting-sources`, `--settings`, `--strict-mcp-config` オプション付き)
+- `agents` - バックグラウンドエージェントを管理 (`--add-dir`, `--agent`, `--all`, `--allow-dangerously-skip-permissions`, `--cwd`, `--dangerously-skip-permissions`, `--effort`, `--json`, `--mcp-config`, `--model`, `--permission-mode`, `--plugin-dir`, `--restricted`, `--setting-sources`, `--settings`, `--strict-mcp-config` オプション付き)
+- `attach` - バックグラウンドセッションをこのターミナルで開く
+- `logs` - バックグラウンドセッションの直近のターミナル出力を表示
+- `stop` (`kill`) - バックグラウンドセッションを停止 (会話は保持される)
+- `rm` - バックグラウンドセッションを削除 (安全な場合はワークツリーも削除)
+- `respawn` - バックグラウンドセッションを再起動して現在の Claude Code バージョンで動かす (`--all` オプション付き)
 - `auto-mode` - 自動モード分類器の設定を確認・リセット
   - `config` - 有効な自動モード設定を JSON で出力
   - `critique` - カスタム自動モードルールに対する AI のフィードバックを取得 (`--model` オプション付き)
@@ -288,13 +293,13 @@ claude --settings <TAB>
 - セッション管理: `--continue`, `--resume`, `--fork-session`, `--from-pr`
 - モデル選択: `--model`, `--fallback-model`
 - 出力制御: `--print`, `--output-format`, `--input-format`
-- パーミッション: `--permission-mode`, `--dangerously-skip-permissions`
+- パーミッション: `--permission-mode`, `--dangerously-skip-permissions`, `--restricted`
 - ツール: `--tools`, `--allowed-tools`, `--disallowed-tools`
 - MCP: `--mcp-config`, `--strict-mcp-config`
 - ファイルリソース: `--file`
 - ワークツリー: `--worktree`, `--tmux`
 - クラウドセッション: `--cloud`, `--environment`, `--teleport`
-- バックグラウンドエージェント: `--bg`, `--background`
+- バックグラウンドセッション: `--bg`, `--background` (出力される id を受け取る `attach`, `logs`, `stop`, `rm`, `respawn` コマンドも対応)
 - コンテキスト管理: `--autocompact`
 - デバッグ: `--debug`, `--debug-file`
 - その他多数...

@@ -2,7 +2,7 @@
 # Translated from bash completion script
 
 def "nu-complete claude commands" [] {
-    [agents auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview]
+    [agents attach logs stop kill rm respawn auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview]
 }
 
 def "nu-complete claude output-format" [] {
@@ -159,6 +159,7 @@ export extern claude [
     --ax-screen-reader                                      # Render screen-reader friendly output (flat text, no decorative borders or animations)
     --bare                                                  # Minimal mode: skip hooks, LSP, and auto-discovery
     --safe-mode                                             # Start with all customizations disabled (troubleshooting)
+    --restricted                                            # Restricted mode: drop code-running tools and WebFetch, ignore user/project/local settings
     --brief                                                 # Enable SendUserMessage tool for agent-to-user communication
     --prompt-suggestions: string@"nu-complete claude bool"  # Enable prompt suggestions
     --remote-control: string                                # Start an interactive session with Remote Control enabled (optionally named)
@@ -743,10 +744,53 @@ export extern "claude agents" [
     --model: string@"nu-complete claude models"             # Default model for dispatched sessions
     --permission-mode: string@"nu-complete claude permission-mode"  # Default permission mode for dispatched sessions
     --plugin-dir: path                                      # Load plugins from directory (repeatable)
+    --restricted                                            # Start dispatched sessions in restricted mode
     --setting-sources: string@"nu-complete claude scope"    # Setting sources
     --settings: path                                        # Settings file or JSON string
     --strict-mcp-config                                     # Only use MCP servers from --mcp-config
     --help(-h)
+]
+
+# --- background sessions ---
+# `--help` for these is a hand-written usage line with no `Options:` section, so
+# `respawn --all` is the only flag any of them documents. <id> is the short id
+# that `claude --bg` prints and `claude agents` lists.
+
+# Open a background session in this terminal
+export extern "claude attach" [
+    --help(-h)
+    id?: string                                             # Background session id
+]
+
+# Print the recent terminal output of a background session
+export extern "claude logs" [
+    --help(-h)
+    id?: string                                             # Background session id
+]
+
+# Stop a background session, keeping its conversation
+export extern "claude stop" [
+    --help(-h)
+    id?: string                                             # Background session id
+]
+
+# Stop a background session, keeping its conversation (alias for stop)
+export extern "claude kill" [
+    --help(-h)
+    id?: string                                             # Background session id
+]
+
+# Delete a background session, and its worktree when that is safe
+export extern "claude rm" [
+    --help(-h)
+    id?: string                                             # Background session id
+]
+
+# Restart a background session so it runs the current Claude Code version
+export extern "claude respawn" [
+    --all                                                   # Restart every background session
+    --help(-h)
+    id?: string                                             # Background session id
 ]
 
 # --- setup-token ---

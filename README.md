@@ -6,7 +6,7 @@ Shell completion scripts for [Claude Code](https://claude.com/claude-code), prov
 
 ## Features
 
-- **Command completion**: Tab complete `claude` subcommands (`agents`, `auto-mode`, `auth`, `mcp`, `plugin`, `plugins`, `setup-token`, `doctor`, `gateway`, `import`, `update`, `upgrade`, `install`, `ultrareview`)
+- **Command completion**: Tab complete `claude` subcommands (`agents`, `attach`, `logs`, `stop`, `kill`, `rm`, `respawn`, `auto-mode`, `auth`, `mcp`, `plugin`, `plugins`, `setup-token`, `doctor`, `gateway`, `import`, `update`, `upgrade`, `install`, `ultrareview`)
 - **Option completion**: All CLI options and flags are completable
 - **Contextual suggestions**: Option values are suggested where applicable
   - Output formats: `text`, `json`, `stream-json`
@@ -172,7 +172,7 @@ After installation, you can use tab completion with the `claude` command:
 ```bash
 # Complete subcommands
 claude <TAB>
-# Shows: agents auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview
+# Shows: agents attach logs stop kill rm respawn auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview
 
 # Complete options
 claude --<TAB>
@@ -233,7 +233,12 @@ claude --settings <TAB>
 
 ## Supported Commands
 
-- `agents` - Manage background agents (with `--add-dir`, `--agent`, `--all`, `--allow-dangerously-skip-permissions`, `--cwd`, `--dangerously-skip-permissions`, `--effort`, `--json`, `--mcp-config`, `--model`, `--permission-mode`, `--plugin-dir`, `--setting-sources`, `--settings`, `--strict-mcp-config` options)
+- `agents` - Manage background agents (with `--add-dir`, `--agent`, `--all`, `--allow-dangerously-skip-permissions`, `--cwd`, `--dangerously-skip-permissions`, `--effort`, `--json`, `--mcp-config`, `--model`, `--permission-mode`, `--plugin-dir`, `--restricted`, `--setting-sources`, `--settings`, `--strict-mcp-config` options)
+- `attach` - Open a background session in this terminal
+- `logs` - Print a background session's recent terminal output
+- `stop` (`kill`) - Stop a background session, keeping its conversation
+- `rm` - Delete a background session, and its worktree when that is safe
+- `respawn` - Restart a background session so it runs the current Claude Code version (with `--all` option)
 - `auto-mode` - Inspect or reset auto mode classifier configuration
   - `config` - Print the effective auto mode config as JSON
   - `critique` - Get AI feedback on your custom auto mode rules (with `--model` option)
@@ -288,13 +293,13 @@ All Claude Code CLI options are supported, including:
 - Session management: `--continue`, `--resume`, `--fork-session`, `--from-pr`
 - Model selection: `--model`, `--fallback-model`
 - Output control: `--print`, `--output-format`, `--input-format`
-- Permissions: `--permission-mode`, `--dangerously-skip-permissions`
+- Permissions: `--permission-mode`, `--dangerously-skip-permissions`, `--restricted`
 - Tools: `--tools`, `--allowed-tools`, `--disallowed-tools`
 - MCP: `--mcp-config`, `--strict-mcp-config`
 - File resources: `--file`
 - Worktree: `--worktree`, `--tmux`
 - Cloud sessions: `--cloud`, `--environment`, `--teleport`
-- Background agent: `--bg`, `--background`
+- Background sessions: `--bg`, `--background` (and the `attach`, `logs`, `stop`, `rm`, `respawn` commands that take the id it prints)
 - Context management: `--autocompact`
 - Debugging: `--debug`, `--debug-file`
 - And many more...
