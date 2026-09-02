@@ -194,6 +194,9 @@ claude --effort <TAB>
 claude --autocompact <TAB>
 # 表示: auto 100k 200k 500k 1m
 
+claude --system-prompt-snapshot <TAB>
+# 表示: on off
+
 # install のターゲット補完
 claude install <TAB>
 # 表示: stable latest --force --help
@@ -293,6 +296,7 @@ claude --settings <TAB>
 - セッション管理: `--continue`, `--resume`, `--fork-session`, `--from-pr`
 - モデル選択: `--model`, `--fallback-model`
 - 出力制御: `--print`, `--output-format`, `--input-format`
+- システムプロンプト: `--system-prompt`, `--append-system-prompt`, `--system-prompt-snapshot`
 - パーミッション: `--permission-mode`, `--dangerously-skip-permissions`, `--restricted`
 - ツール: `--tools`, `--allowed-tools`, `--disallowed-tools`
 - MCP: `--mcp-config`, `--strict-mcp-config`

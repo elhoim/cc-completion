@@ -194,6 +194,9 @@ claude --effort <TAB>
 claude --autocompact <TAB>
 # Shows: auto 100k 200k 500k 1m
 
+claude --system-prompt-snapshot <TAB>
+# Shows: on off
+
 # Complete install targets
 claude install <TAB>
 # Shows: stable latest --force --help
@@ -293,6 +296,7 @@ All Claude Code CLI options are supported, including:
 - Session management: `--continue`, `--resume`, `--fork-session`, `--from-pr`
 - Model selection: `--model`, `--fallback-model`
 - Output control: `--print`, `--output-format`, `--input-format`
+- System prompt: `--system-prompt`, `--append-system-prompt`, `--system-prompt-snapshot`
 - Permissions: `--permission-mode`, `--dangerously-skip-permissions`, `--restricted`
 - Tools: `--tools`, `--allowed-tools`, `--disallowed-tools`
 - MCP: `--mcp-config`, `--strict-mcp-config`

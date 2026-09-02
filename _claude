@@ -19,7 +19,7 @@ _claude_tools() {
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal \
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools \
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors \
-        Artifact ClaudeDesign DesignSync Projects \
+        Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects \
         SendUserFile SendFile SendFeedback SendUserMessage EndConversation \
         ObserverReport StructuredOutput TestingPermission \
         ShareOnboardingGuide ShowOnboardingRolePicker SuggestPluginInstall SuggestSkills \
@@ -76,6 +76,7 @@ _claude() {
         '*--mcp-config[Load MCP servers from JSON files or strings]:configs:_files'
         '--system-prompt[System prompt to use for the session]:prompt:'
         '--append-system-prompt[Append a system prompt]:prompt:'
+        '--system-prompt-snapshot[Record the system prompt once per conversation and reuse it verbatim on every request and resume (recommended: on)]:mode:(on off)'
         '--exclude-dynamic-system-prompt-sections[Move per-machine sections to first user message for prompt-cache reuse (default system prompt only)]'
         '--permission-mode[Permission mode to use]:mode:(acceptEdits bypassPermissions manual dontAsk plan auto)'
         {-c,--continue}'[Continue the most recent conversation]'

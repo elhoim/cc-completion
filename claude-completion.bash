@@ -16,7 +16,8 @@ _claude_completion() {
         --dangerously-skip-permissions --allow-dangerously-skip-permissions
         --max-budget-usd --replay-user-messages --allowedTools --allowed-tools
         --tools --disallowedTools --disallowed-tools --mcp-config
-        --system-prompt --append-system-prompt --exclude-dynamic-system-prompt-sections
+        --system-prompt --append-system-prompt --system-prompt-snapshot
+        --exclude-dynamic-system-prompt-sections
         --permission-mode
         --continue --resume --fork-session --no-session-persistence
         --model --agent --betas --fallback-model --settings --add-dir
@@ -41,7 +42,7 @@ _claude_completion() {
         --setting-sources --effort --mcp-config --settings --plugin-dir --add-dir
         --file --debug-file --tools --allowedTools --allowed-tools
         --disallowedTools --disallowed-tools --json-schema --system-prompt
-        --append-system-prompt --agents --max-budget-usd --session-id
+        --append-system-prompt --system-prompt-snapshot --agents --max-budget-usd --session-id
         --agent --betas --name -n --plugin-url --remote-control-session-name-prefix
         -d --debug --from-pr -r --resume -w --worktree --remote-control
         --prompt-suggestions --autocompact
@@ -65,7 +66,7 @@ _claude_completion() {
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
-        Artifact ClaudeDesign DesignSync Projects
+        Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
         SendUserFile SendFile SendFeedback SendUserMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
         ShareOnboardingGuide ShowOnboardingRolePicker SuggestPluginInstall SuggestSkills
@@ -142,6 +143,10 @@ _claude_completion() {
             ;;
         --prompt-suggestions)
             COMPREPLY=($(compgen -W "true false 1 0 yes no on off" -- "$cur"))
+            return 0
+            ;;
+        --system-prompt-snapshot)
+            COMPREPLY=($(compgen -W "on off" -- "$cur"))
             return 0
             ;;
         --mcp-config|--settings|--plugin-dir|--debug-file)

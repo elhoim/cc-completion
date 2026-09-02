@@ -64,6 +64,10 @@ def "nu-complete claude bool" [] {
     [true false 1 0 yes no on off]
 }
 
+def "nu-complete claude on-off" [] {
+    [on off]
+}
+
 def "nu-complete claude plugin-component" [] {
     [skills agents hooks mcp lsp output-style channel]
 }
@@ -86,7 +90,7 @@ def "nu-complete claude tools" [] {
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
-        Artifact ClaudeDesign DesignSync Projects
+        Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
         SendUserFile SendFile SendFeedback SendUserMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
         ShareOnboardingGuide ShowOnboardingRolePicker SuggestPluginInstall SuggestSkills
@@ -125,6 +129,7 @@ export extern claude [
     --mcp-config: path                                      # MCP config file
     --system-prompt: string                                 # System prompt
     --append-system-prompt: string                          # Append system prompt
+    --system-prompt-snapshot: string@"nu-complete claude on-off"  # Record the system prompt once per conversation and reuse it verbatim (recommended: on)
     --exclude-dynamic-system-prompt-sections                # Move per-machine sections to first user message (default system prompt only)
     --permission-mode: string@"nu-complete claude permission-mode"  # Permission mode
     --continue(-c)                                          # Continue last session
