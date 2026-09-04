@@ -79,6 +79,7 @@ _claude() {
         '--system-prompt-snapshot[Record the system prompt once per conversation and reuse it verbatim on every request and resume (recommended: on)]:mode:(on off)'
         '--exclude-dynamic-system-prompt-sections[Move per-machine sections to first user message for prompt-cache reuse (default system prompt only)]'
         '--permission-mode[Permission mode to use]:mode:(acceptEdits bypassPermissions manual dontAsk plan auto)'
+        '--permission-prompts[Who answers permission prompts with --print]:target:(host none)'
         {-c,--continue}'[Continue the most recent conversation]'
         {-r,--resume}'[Resume a conversation by session ID]::session:'
         '--fork-session[Create a new session ID when resuming]'
@@ -168,11 +169,19 @@ _claude() {
                         {-h,--help}'[Display help for command]'
                     ;;
                 # Background session commands. Their `--help` is a hand-written
-                # usage line with no `Options:` section, so `respawn --all` is
-                # the only flag any of them documents. <id> is the short id
+                # usage line with no `Options:` section, so the only flags any of
+                # them documents are the ones that usage line spells out
+                # (`respawn --all`, `rm --discard-unpushed`). <id> is the short id
                 # `claude --bg` prints -- runtime state, so no action here.
-                attach|logs|stop|kill|rm)
+                attach|logs|stop|kill)
                     _arguments '1:session id:'
+                    ;;
+                rm)
+                    # The value is a `<commit>@<worktree-id>` echoed by an earlier
+                    # `claude rm <id>`, so there is nothing to offer for it.
+                    _arguments \
+                        "--discard-unpushed[Also discard the worktree's unpushed commits and uncommitted changes]:commit@worktree-id:" \
+                        '1:session id:'
                     ;;
                 respawn)
                     _arguments \
@@ -437,6 +446,7 @@ _claude() {
                                     ;;
                                 validate)
                                     _arguments \
+                                        '--json[Output the validation report as JSON (same exit codes)]' \
                                         '--strict[Treat warnings as errors (exit 1)]' \
                                         {-h,--help}'[Display help for command]' \
                                         '1:path:_files'

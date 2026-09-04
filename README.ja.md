@@ -197,6 +197,9 @@ claude --autocompact <TAB>
 claude --system-prompt-snapshot <TAB>
 # 表示: on off
 
+claude --permission-prompts <TAB>
+# 表示: host none
+
 # install のターゲット補完
 claude install <TAB>
 # 表示: stable latest --force --help
@@ -240,7 +243,7 @@ claude --settings <TAB>
 - `attach` - バックグラウンドセッションをこのターミナルで開く
 - `logs` - バックグラウンドセッションの直近のターミナル出力を表示
 - `stop` (`kill`) - バックグラウンドセッションを停止 (会話は保持される)
-- `rm` - バックグラウンドセッションを削除 (安全な場合はワークツリーも削除)
+- `rm` - バックグラウンドセッションを削除 (安全な場合はワークツリーも削除。`--discard-unpushed` オプション付き)
 - `respawn` - バックグラウンドセッションを再起動して現在の Claude Code バージョンで動かす (`--all` オプション付き)
 - `auto-mode` - 自動モード分類器の設定を確認・リセット
   - `config` - 有効な自動モード設定を JSON で出力
@@ -276,7 +279,7 @@ claude --settings <TAB>
   - `tag` - プラグインリリース用に `{name}--v{version}` の git タグを作成 (`--dry-run`, `--force`, `--message`, `--push`, `--remote` オプション付き)
   - `uninstall` (`remove`) - インストール済みのプラグインをアンインストール (`--keep-data`, `--prune`, `--scope`, `--yes` オプション付き)
   - `update` - プラグインを最新バージョンに更新 (`--scope`, `--yes` オプション付き)
-  - `validate` - プラグインまたはマーケットプレイスのマニフェストを検証 (`--strict` オプション付き)
+  - `validate` - プラグインまたはマーケットプレイスのマニフェストを検証 (`--json`, `--strict` オプション付き)
 - `project` - Claude Code プロジェクト状態の管理
   - `purge` - プロジェクトの Claude Code 状態 (トランスクリプト、タスク、ファイル履歴、設定エントリ) をすべて削除 (`--all`, `--dry-run`, `--interactive`, `--yes` オプション付き)
 - `setup-token` - 長期認証トークンを設定
@@ -297,7 +300,7 @@ claude --settings <TAB>
 - モデル選択: `--model`, `--fallback-model`
 - 出力制御: `--print`, `--output-format`, `--input-format`
 - システムプロンプト: `--system-prompt`, `--append-system-prompt`, `--system-prompt-snapshot`
-- パーミッション: `--permission-mode`, `--dangerously-skip-permissions`, `--restricted`
+- パーミッション: `--permission-mode`, `--permission-prompts`, `--dangerously-skip-permissions`, `--restricted`
 - ツール: `--tools`, `--allowed-tools`, `--disallowed-tools`
 - MCP: `--mcp-config`, `--strict-mcp-config`
 - ファイルリソース: `--file`

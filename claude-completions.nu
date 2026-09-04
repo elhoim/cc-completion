@@ -17,6 +17,10 @@ def "nu-complete claude permission-mode" [] {
     [acceptEdits bypassPermissions manual dontAsk plan auto]
 }
 
+def "nu-complete claude permission-prompts" [] {
+    [host none]
+}
+
 def "nu-complete claude eval-ablation" [] {
     [none with-without]
 }
@@ -132,6 +136,7 @@ export extern claude [
     --system-prompt-snapshot: string@"nu-complete claude on-off"  # Record the system prompt once per conversation and reuse it verbatim (recommended: on)
     --exclude-dynamic-system-prompt-sections                # Move per-machine sections to first user message (default system prompt only)
     --permission-mode: string@"nu-complete claude permission-mode"  # Permission mode
+    --permission-prompts: string@"nu-complete claude permission-prompts"  # Who answers permission prompts with --print
     --continue(-c)                                          # Continue last session
     --resume(-r): string                                    # Resume session by ID
     --fork-session                                          # Fork session
@@ -460,6 +465,7 @@ export extern "claude plugin update" [
 
 # Validate a plugin or marketplace manifest
 export extern "claude plugin validate" [
+    --json                                                  # Output the validation report as JSON (same exit codes)
     --strict                                                # Treat warnings as errors (exit 1)
     --help(-h)
     path: path                                              # Plugin or marketplace manifest path
@@ -673,6 +679,7 @@ export extern "claude plugins update" [
 
 # Validate a plugin or marketplace manifest
 export extern "claude plugins validate" [
+    --json                                                  # Output the validation report as JSON (same exit codes)
     --strict                                                # Treat warnings as errors (exit 1)
     --help(-h)
     path: path                                              # Plugin or marketplace manifest path
@@ -787,6 +794,7 @@ export extern "claude kill" [
 
 # Delete a background session, and its worktree when that is safe
 export extern "claude rm" [
+    --discard-unpushed: string                              # Also discard the worktree's unpushed commits and uncommitted changes (<commit>@<worktree-id>)
     --help(-h)
     id?: string                                             # Background session id
 ]

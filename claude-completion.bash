@@ -18,7 +18,7 @@ _claude_completion() {
         --tools --disallowedTools --disallowed-tools --mcp-config
         --system-prompt --append-system-prompt --system-prompt-snapshot
         --exclude-dynamic-system-prompt-sections
-        --permission-mode
+        --permission-mode --permission-prompts
         --continue --resume --fork-session --no-session-persistence
         --model --agent --betas --fallback-model --settings --add-dir
         --ide --strict-mcp-config --session-id --agents --setting-sources
@@ -38,7 +38,8 @@ _claude_completion() {
     # detecting the subcommand, so e.g. `claude --model opus mcp` finds `mcp`
     # rather than mistaking the value `opus` for the subcommand.
     local value_flags="
-        --output-format --input-format --permission-mode --model --fallback-model
+        --output-format --input-format --permission-mode --permission-prompts
+        --model --fallback-model
         --setting-sources --effort --mcp-config --settings --plugin-dir --add-dir
         --file --debug-file --tools --allowedTools --allowed-tools
         --disallowedTools --disallowed-tools --json-schema --system-prompt
@@ -118,6 +119,12 @@ _claude_completion() {
             ;;
         --permission-mode)
             COMPREPLY=($(compgen -W "acceptEdits bypassPermissions manual dontAsk plan auto" -- "$cur"))
+            return 0
+            ;;
+        # `--permission-prompts <target>` -- who answers permission prompts under
+        # --print. A closed choice list; the permission mode still decides the rest.
+        --permission-prompts)
+            COMPREPLY=($(compgen -W "host none" -- "$cur"))
             return 0
             ;;
         --model|--fallback-model)
@@ -528,7 +535,7 @@ _claude_completion() {
                     ;;
                 validate)
                     if [[ "$cur" == -* ]]; then
-                        COMPREPLY=($(compgen -W "--strict --help -h" -- "$cur"))
+                        COMPREPLY=($(compgen -W "--json --strict --help -h" -- "$cur"))
                     else
                         # <path> is a plugin/marketplace manifest or its directory.
                         _filedir
@@ -621,11 +628,28 @@ _claude_completion() {
             esac
             ;;
         # Background session commands. Their `--help` output is a hand-written
-        # usage line with no `Options:` section, so the only flag any of them
-        # documents is `respawn --all` -- not even -h/--help. <id> is the short
-        # id `claude --bg` prints; it is runtime state, so no candidates.
-        attach|logs|stop|kill|rm)
+        # usage line with no `Options:` section, so the only flags any of them
+        # documents are the ones spelled out in that usage line (`respawn --all`,
+        # `rm --discard-unpushed`) -- not even -h/--help. <id> is the short id
+        # `claude --bg` prints; it is runtime state, so no candidates.
+        attach|logs|stop|kill)
             COMPREPLY=()
+            ;;
+        rm)
+            case "$prev" in
+                # `<commit>@<worktree-id>`, echoed by an earlier `claude rm <id>`.
+                # Runtime state, so no candidates.
+                --discard-unpushed)
+                    COMPREPLY=()
+                    ;;
+                *)
+                    if [[ "$cur" == -* ]]; then
+                        COMPREPLY=($(compgen -W "--discard-unpushed" -- "$cur"))
+                    else
+                        COMPREPLY=()
+                    fi
+                    ;;
+            esac
             ;;
         respawn)
             COMPREPLY=($(compgen -W "--all" -- "$cur"))

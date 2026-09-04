@@ -197,6 +197,9 @@ claude --autocompact <TAB>
 claude --system-prompt-snapshot <TAB>
 # Shows: on off
 
+claude --permission-prompts <TAB>
+# Shows: host none
+
 # Complete install targets
 claude install <TAB>
 # Shows: stable latest --force --help
@@ -240,7 +243,7 @@ claude --settings <TAB>
 - `attach` - Open a background session in this terminal
 - `logs` - Print a background session's recent terminal output
 - `stop` (`kill`) - Stop a background session, keeping its conversation
-- `rm` - Delete a background session, and its worktree when that is safe
+- `rm` - Delete a background session, and its worktree when that is safe (with `--discard-unpushed` option)
 - `respawn` - Restart a background session so it runs the current Claude Code version (with `--all` option)
 - `auto-mode` - Inspect or reset auto mode classifier configuration
   - `config` - Print the effective auto mode config as JSON
@@ -276,7 +279,7 @@ claude --settings <TAB>
   - `tag` - Create a `{name}--v{version}` git tag for a plugin release (with `--dry-run`, `--force`, `--message`, `--push`, `--remote` options)
   - `uninstall` (`remove`) - Uninstall an installed plugin (with `--keep-data`, `--prune`, `--scope`, `--yes` options)
   - `update` - Update a plugin to the latest version (with `--scope`, `--yes` options)
-  - `validate` - Validate a plugin or marketplace manifest (with `--strict` option)
+  - `validate` - Validate a plugin or marketplace manifest (with `--json`, `--strict` options)
 - `project` - Manage Claude Code project state
   - `purge` - Delete all Claude Code state for a project (transcripts, tasks, file history, config entry) (with `--all`, `--dry-run`, `--interactive`, `--yes` options)
 - `setup-token` - Set up a long-lived authentication token
@@ -297,7 +300,7 @@ All Claude Code CLI options are supported, including:
 - Model selection: `--model`, `--fallback-model`
 - Output control: `--print`, `--output-format`, `--input-format`
 - System prompt: `--system-prompt`, `--append-system-prompt`, `--system-prompt-snapshot`
-- Permissions: `--permission-mode`, `--dangerously-skip-permissions`, `--restricted`
+- Permissions: `--permission-mode`, `--permission-prompts`, `--dangerously-skip-permissions`, `--restricted`
 - Tools: `--tools`, `--allowed-tools`, `--disallowed-tools`
 - MCP: `--mcp-config`, `--strict-mcp-config`
 - File resources: `--file`
