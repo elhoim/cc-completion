@@ -274,7 +274,7 @@ claude --settings <TAB>
   - `init` (`new`) - 新しいプラグインの雛形を作成 (`--author`, `--author-email`, `--description`, `--force`, `--with` オプション付き)
   - `install` (`i`) - 利用可能なマーケットプレイスからプラグインをインストール (`--config`, `--scope`, `--yes` オプション付き)
   - `list` - インストール済みのプラグインを一覧表示 (`--available`, `--json` オプション付き)
-  - `marketplace` - Claude Code マーケットプレイスの管理 (`add`, `list`, `remove` (`rm`), `update`); `add` は `--scope`, `--sparse`、`list` は `--json`、`remove`/`rm` は `--scope` をサポート
+  - `marketplace` - Claude Code マーケットプレイスの管理 (`add`, `list`, `remove` (`rm`), `update`); `add` は `--claudeai`, `--scope`, `--sparse`、`list` は `--json`、`remove`/`rm` は `--scope` をサポート
   - `prune` (`autoremove`) - 不要になった自動インストール依存を削除 (`--dry-run`, `--scope`, `--yes` オプション付き)
   - `tag` - プラグインリリース用に `{name}--v{version}` の git タグを作成 (`--dry-run`, `--force`, `--message`, `--push`, `--remote` オプション付き)
   - `uninstall` (`remove`) - インストール済みのプラグインをアンインストール (`--keep-data`, `--prune`, `--scope`, `--yes` オプション付き)

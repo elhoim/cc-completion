@@ -404,6 +404,7 @@ export extern "claude plugin marketplace" [
 
 # Add a marketplace
 export extern "claude plugin marketplace add" [
+    --claudeai                                              # Add the marketplace that claude.ai hosts for you
     --scope: string@"nu-complete claude scope"              # Where to declare the marketplace
     --sparse: string                                         # Limit checkout to specific directories
     --help(-h)
@@ -618,6 +619,7 @@ export extern "claude plugins marketplace" [
 
 # Add a marketplace
 export extern "claude plugins marketplace add" [
+    --claudeai                                              # Add the marketplace that claude.ai hosts for you
     --scope: string@"nu-complete claude scope"              # Where to declare the marketplace
     --sparse: string                                         # Limit checkout to specific directories
     --help(-h)

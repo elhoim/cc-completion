@@ -371,7 +371,7 @@ _claude_completion() {
                                     COMPREPLY=()
                                     ;;
                                 *)
-                                    COMPREPLY=($(compgen -W "--scope --sparse --help -h" -- "$cur"))
+                                    COMPREPLY=($(compgen -W "--claudeai --scope --sparse --help -h" -- "$cur"))
                                     ;;
                             esac
                             ;;

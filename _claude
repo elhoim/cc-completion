@@ -361,6 +361,7 @@ _claude() {
                                             case $words[1] in
                                                 add)
                                                     _arguments \
+                                                        '--claudeai[Add the marketplace of this name that claude.ai hosts for you]' \
                                                         '--scope[Where to declare the marketplace]:scope:(user project local)' \
                                                         '--sparse[Limit checkout to specific directories via git sparse-checkout]:paths:' \
                                                         {-h,--help}'[Display help for command]'
