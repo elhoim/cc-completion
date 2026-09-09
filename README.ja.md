@@ -206,7 +206,7 @@ claude install <TAB>
 
 # import のソース補完
 claude import <TAB>
-# 表示: codex gemini --dry-run --yes --help
+# 表示: codex gemini cursor --dry-run --yes --help
 
 # auth サブコマンドの補完
 claude auth <TAB>
@@ -285,7 +285,7 @@ claude --settings <TAB>
 - `setup-token` - 長期認証トークンを設定
 - `doctor` - Claude Code インストールの健全性をチェック
 - `gateway` - エンタープライズ認証/テレメトリゲートウェイを実行 (`--config` オプション付き)
-- `import` - 他の AI コーディングエージェント (`codex`, `gemini`) の設定を Claude Code にインポート (`--dry-run`, `--yes` オプション付き)
+- `import` - 他の AI コーディングエージェント (`codex`, `gemini`, `cursor`) の設定を Claude Code にインポート (`--dry-run`, `--yes` オプション付き)
 - `update` - アップデートを確認し、利用可能な場合はインストール
 - `plugins` - `plugin` のエイリアス
 - `upgrade` - `update` のエイリアス

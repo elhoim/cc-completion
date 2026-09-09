@@ -612,7 +612,7 @@ _claude_completion() {
             COMPREPLY=($(compgen -W "--help -h" -- "$cur"))
             ;;
         import)
-            COMPREPLY=($(compgen -W "codex gemini --dry-run --yes --help -h" -- "$cur"))
+            COMPREPLY=($(compgen -W "codex gemini cursor --dry-run --yes --help -h" -- "$cur"))
             ;;
         install)
             COMPREPLY=($(compgen -W "stable latest --force --help -h" -- "$cur"))

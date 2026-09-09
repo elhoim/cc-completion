@@ -206,7 +206,7 @@ claude install <TAB>
 
 # Complete import sources
 claude import <TAB>
-# Shows: codex gemini --dry-run --yes --help
+# Shows: codex gemini cursor --dry-run --yes --help
 
 # Complete auth subcommands
 claude auth <TAB>
@@ -285,7 +285,7 @@ claude --settings <TAB>
 - `setup-token` - Set up a long-lived authentication token
 - `doctor` - Check the health of your Claude Code installation
 - `gateway` - Run the enterprise auth/telemetry gateway (with `--config` option)
-- `import` - Import config from another AI coding agent (`codex`, `gemini`) into Claude Code (with `--dry-run`, `--yes` options)
+- `import` - Import config from another AI coding agent (`codex`, `gemini`, `cursor`) into Claude Code (with `--dry-run`, `--yes` options)
 - `update` - Check for updates and install if available
 - `plugins` - Alias for `plugin`
 - `upgrade` - Alias for `update`

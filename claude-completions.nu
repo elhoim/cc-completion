@@ -54,7 +54,7 @@ def "nu-complete claude install-channel" [] {
 }
 
 def "nu-complete claude import-source" [] {
-    [codex gemini]
+    [codex gemini cursor]
 }
 
 # `--autocompact <auto|tokens>` accepts "auto" or any window in the documented
@@ -133,7 +133,7 @@ export extern claude [
     --mcp-config: path                                      # MCP config file
     --system-prompt: string                                 # System prompt
     --append-system-prompt: string                          # Append system prompt
-    --system-prompt-snapshot: string@"nu-complete claude on-off"  # Record the system prompt once per conversation and reuse it verbatim (recommended: on)
+    --system-prompt-snapshot: string@"nu-complete claude on-off"  # Record the system prompt once per conversation and reuse it verbatim (on is the default)
     --exclude-dynamic-system-prompt-sections                # Move per-machine sections to first user message (default system prompt only)
     --permission-mode: string@"nu-complete claude permission-mode"  # Permission mode
     --permission-prompts: string@"nu-complete claude permission-prompts"  # Who answers permission prompts with --print
