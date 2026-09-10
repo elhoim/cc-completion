@@ -87,7 +87,7 @@ def "nu-complete claude tools" [] {
         Bash PowerShell REPL
         Read Write Edit NotebookEdit Glob Grep LSP
         WebFetch WebSearch
-        Agent ListAgents Skill SendMessage Workflow ToolSearch
+        Agent ListAgents Skill SendMessage SubagentHandback Workflow ToolSearch
         TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications Poll
         EnterWorktree ExitWorktree
