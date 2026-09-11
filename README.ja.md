@@ -243,7 +243,7 @@ claude --settings <TAB>
 - `attach` - バックグラウンドセッションをこのターミナルで開く
 - `logs` - バックグラウンドセッションの直近のターミナル出力を表示
 - `stop` (`kill`) - バックグラウンドセッションを停止 (会話は保持される)
-- `rm` - バックグラウンドセッションを削除 (安全な場合はワークツリーも削除。`--discard-unpushed` オプション付き)
+- `rm` - バックグラウンドセッションを削除 (安全な場合はワークツリーも削除。`--discard-unpushed`, `--force-remove-worktree` オプション付き)
 - `respawn` - バックグラウンドセッションを再起動して現在の Claude Code バージョンで動かす (`--all` オプション付き)
 - `auto-mode` - 自動モード分類器の設定を確認・リセット
   - `config` - 有効な自動モード設定を JSON で出力
@@ -267,18 +267,18 @@ claude --settings <TAB>
   - `logout` - MCP サーバーの保存済み OAuth 認証情報をクリア
 - `plugin` - Claude Code プラグインの管理
   - `details` - プラグインのコンポーネント一覧と推定トークンコストを表示
-  - `disable` - 有効なプラグインを無効化 (`--all`, `--scope` オプション付き)
-  - `enable` - 無効なプラグインを有効化 (`--scope` オプション付き)
+  - `disable` - 有効なプラグインを無効化 (`--all`, `--json`, `--scope` オプション付き)
+  - `enable` - 無効なプラグインを有効化 (`--json`, `--scope` オプション付き)
   - `eval` - プラグインに対して eval ケースを実行しスコア結果を報告 (`--ablation`, `--allow-tools`, `--case`, `--eval-dir`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--mocks`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--verbose` オプション付き。`--json` は出力先の `.json` パスを任意で取る)
     - `init` - インタビュー形式で eval ディレクトリ (既定は `evals/`) 配下に eval スイートを作成 (`--bare`, `--eval-dir`, `--interactive` オプション付き)
   - `init` (`new`) - 新しいプラグインの雛形を作成 (`--author`, `--author-email`, `--description`, `--force`, `--with` オプション付き)
-  - `install` (`i`) - 利用可能なマーケットプレイスからプラグインをインストール (`--config`, `--scope`, `--yes` オプション付き)
+  - `install` (`i`) - 利用可能なマーケットプレイスからプラグインをインストール (`--config`, `--json`, `--scope`, `--yes` オプション付き)
   - `list` - インストール済みのプラグインを一覧表示 (`--available`, `--json` オプション付き)
   - `marketplace` - Claude Code マーケットプレイスの管理 (`add`, `list`, `remove` (`rm`), `update`); `add` は `--claudeai`, `--scope`, `--sparse`、`list` は `--json`、`remove`/`rm` は `--scope` をサポート
   - `prune` (`autoremove`) - 不要になった自動インストール依存を削除 (`--dry-run`, `--scope`, `--yes` オプション付き)
   - `tag` - プラグインリリース用に `{name}--v{version}` の git タグを作成 (`--dry-run`, `--force`, `--message`, `--push`, `--remote` オプション付き)
-  - `uninstall` (`remove`) - インストール済みのプラグインをアンインストール (`--keep-data`, `--prune`, `--scope`, `--yes` オプション付き)
-  - `update` - プラグインを最新バージョンに更新 (`--scope`, `--yes` オプション付き)
+  - `uninstall` (`remove`) - インストール済みのプラグインをアンインストール (`--json`, `--keep-data`, `--prune`, `--scope`, `--yes` オプション付き)
+  - `update` - プラグインを最新バージョンに更新 (`--json`, `--scope`, `--yes` オプション付き)
   - `validate` - プラグインまたはマーケットプレイスのマニフェストを検証 (`--json`, `--strict` オプション付き)
 - `project` - Claude Code プロジェクト状態の管理
   - `purge` - プロジェクトの Claude Code 状態 (トランスクリプト、タスク、ファイル履歴、設定エントリ) をすべて削除 (`--all`, `--dry-run`, `--interactive`, `--yes` オプション付き)

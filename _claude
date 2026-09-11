@@ -171,16 +171,18 @@ _claude() {
                 # Background session commands. Their `--help` is a hand-written
                 # usage line with no `Options:` section, so the only flags any of
                 # them documents are the ones that usage line spells out
-                # (`respawn --all`, `rm --discard-unpushed`). <id> is the short id
-                # `claude --bg` prints -- runtime state, so no action here.
+                # (`respawn --all`, `rm --discard-unpushed` /
+                # `--force-remove-worktree`). <id> is the short id `claude --bg`
+                # prints -- runtime state, so no action here.
                 attach|logs|stop|kill)
                     _arguments '1:session id:'
                     ;;
                 rm)
-                    # The value is a `<commit>@<worktree-id>` echoed by an earlier
-                    # `claude rm <id>`, so there is nothing to offer for it.
+                    # Both values are echoed by an earlier `claude rm <id>`, so
+                    # there is nothing to offer for either of them.
                     _arguments \
                         "--discard-unpushed[Also discard the worktree's unpushed commits and uncommitted changes]:commit@worktree-id:" \
+                        '--force-remove-worktree[Delete the worktree directory the WorktreeRemove hook or git could not remove (the branch is kept)]:worktree-id:' \
                         '1:session id:'
                     ;;
                 respawn)
@@ -465,6 +467,7 @@ _claude() {
                                 install|i)
                                     _arguments \
                                         '--config[Set a userConfig option from the plugin manifest (repeatable)]:key=value:' \
+                                        '--json[Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)]' \
                                         {-s,--scope}'[Installation scope]:scope:(user project local)' \
                                         {-y,--yes}'[Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt]' \
                                         {-h,--help}'[Display help for command]'
@@ -488,16 +491,19 @@ _claude() {
                                 disable)
                                     _arguments \
                                         {-a,--all}'[Disable all enabled plugins]' \
+                                        '--json[Print one machine-readable result line instead of the human message (same exit codes)]' \
                                         {-s,--scope}'[Installation scope]:scope:(user project local)' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
                                 enable)
                                     _arguments \
+                                        '--json[Print one machine-readable result line instead of the human message (same exit codes)]' \
                                         {-s,--scope}'[Installation scope]:scope:(user project local)' \
                                         {-h,--help}'[Display help for command]'
                                     ;;
                                 uninstall|remove)
                                     _arguments \
+                                        '--json[Print one machine-readable result line instead of the human message (not with --prune)]' \
                                         '--keep-data[Preserve plugin persistent data]' \
                                         '--prune[Also remove auto-installed dependencies that are no longer needed]' \
                                         {-s,--scope}'[Uninstall from scope]:scope:(user project local)' \
@@ -513,6 +519,7 @@ _claude() {
                                     ;;
                                 update)
                                     _arguments \
+                                        '--json[Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)]' \
                                         {-s,--scope}'[Installation scope]:scope:(user project local managed)' \
                                         {-y,--yes}'[Accept the displayed marketplace-declared command (changed install or headersHelper) without the confirmation prompt]' \
                                         {-h,--help}'[Display help for command]'

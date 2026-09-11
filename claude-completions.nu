@@ -311,6 +311,7 @@ export extern "claude plugin details" [
 # Disable an enabled plugin
 export extern "claude plugin disable" [
     --all(-a)                                               # Disable all enabled plugins
+    --json                                                  # Print one machine-readable result line instead of the human message (same exit codes)
     --scope(-s): string@"nu-complete claude scope"
     --help(-h)
     ...args: string
@@ -318,6 +319,7 @@ export extern "claude plugin disable" [
 
 # Enable a disabled plugin
 export extern "claude plugin enable" [
+    --json                                                  # Print one machine-readable result line instead of the human message (same exit codes)
     --scope(-s): string@"nu-complete claude scope"
     --help(-h)
     ...args: string
@@ -383,6 +385,7 @@ export extern "claude plugin new" [
 # Install a plugin from available marketplaces
 export extern "claude plugin install" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
+    --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -432,6 +435,7 @@ export extern "claude plugin marketplace update" [
 
 # Uninstall an installed plugin
 export extern "claude plugin uninstall" [
+    --json                                                  # Print one machine-readable result line instead of the human message (not with --prune)
     --keep-data                                             # Preserve plugin persistent data
     --prune                                                 # Also remove auto-installed dependencies that are no longer needed
     --scope(-s): string@"nu-complete claude scope"
@@ -458,6 +462,7 @@ export extern "claude plugin autoremove" [
 
 # Update a plugin to the latest version
 export extern "claude plugin update" [
+    --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --scope(-s): string@"nu-complete claude scope-with-managed"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (changed install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -486,6 +491,7 @@ export extern "claude plugin tag" [
 # Install a plugin (alias for install)
 export extern "claude plugin i" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
+    --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -494,6 +500,7 @@ export extern "claude plugin i" [
 
 # Uninstall an installed plugin (alias for uninstall)
 export extern "claude plugin remove" [
+    --json                                                  # Print one machine-readable result line instead of the human message (not with --prune)
     --keep-data                                             # Preserve plugin persistent data
     --prune                                                 # Also remove auto-installed dependencies that are no longer needed
     --scope(-s): string@"nu-complete claude scope"
@@ -526,6 +533,7 @@ export extern "claude plugins details" [
 # Disable an enabled plugin
 export extern "claude plugins disable" [
     --all(-a)                                               # Disable all enabled plugins
+    --json                                                  # Print one machine-readable result line instead of the human message (same exit codes)
     --scope(-s): string@"nu-complete claude scope"
     --help(-h)
     ...args: string
@@ -533,6 +541,7 @@ export extern "claude plugins disable" [
 
 # Enable a disabled plugin
 export extern "claude plugins enable" [
+    --json                                                  # Print one machine-readable result line instead of the human message (same exit codes)
     --scope(-s): string@"nu-complete claude scope"
     --help(-h)
     ...args: string
@@ -598,6 +607,7 @@ export extern "claude plugins new" [
 # Install a plugin from available marketplaces
 export extern "claude plugins install" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
+    --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -647,6 +657,7 @@ export extern "claude plugins marketplace update" [
 
 # Uninstall an installed plugin
 export extern "claude plugins uninstall" [
+    --json                                                  # Print one machine-readable result line instead of the human message (not with --prune)
     --keep-data                                             # Preserve plugin persistent data
     --prune                                                 # Also remove auto-installed dependencies that are no longer needed
     --scope(-s): string@"nu-complete claude scope"
@@ -673,6 +684,7 @@ export extern "claude plugins autoremove" [
 
 # Update a plugin to the latest version
 export extern "claude plugins update" [
+    --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --scope(-s): string@"nu-complete claude scope-with-managed"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (changed install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -701,6 +713,7 @@ export extern "claude plugins tag" [
 # Install a plugin (alias for install)
 export extern "claude plugins i" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
+    --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -709,6 +722,7 @@ export extern "claude plugins i" [
 
 # Uninstall an installed plugin (alias for uninstall)
 export extern "claude plugins remove" [
+    --json                                                  # Print one machine-readable result line instead of the human message (not with --prune)
     --keep-data                                             # Preserve plugin persistent data
     --prune                                                 # Also remove auto-installed dependencies that are no longer needed
     --scope(-s): string@"nu-complete claude scope"
@@ -797,6 +811,7 @@ export extern "claude kill" [
 # Delete a background session, and its worktree when that is safe
 export extern "claude rm" [
     --discard-unpushed: string                              # Also discard the worktree's unpushed commits and uncommitted changes (<commit>@<worktree-id>)
+    --force-remove-worktree: string                         # Delete the worktree directory the WorktreeRemove hook or git could not remove (<worktree-id>)
     --help(-h)
     id?: string                                             # Background session id
 ]

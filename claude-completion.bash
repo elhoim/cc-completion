@@ -460,7 +460,7 @@ _claude_completion() {
                             COMPREPLY=()
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--config --scope --yes --help -s -y -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--config --json --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;
@@ -486,7 +486,7 @@ _claude_completion() {
                             COMPREPLY=($(compgen -W "user project local" -- "$cur"))
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--all --scope --help -a -s -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--all --json --scope --help -a -s -h" -- "$cur"))
                             ;;
                     esac
                     ;;
@@ -496,7 +496,7 @@ _claude_completion() {
                             COMPREPLY=($(compgen -W "user project local" -- "$cur"))
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--scope --help -s -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--json --scope --help -s -h" -- "$cur"))
                             ;;
                     esac
                     ;;
@@ -506,7 +506,7 @@ _claude_completion() {
                             COMPREPLY=($(compgen -W "user project local" -- "$cur"))
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--keep-data --prune --scope --yes --help -s -y -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--json --keep-data --prune --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;
@@ -526,7 +526,7 @@ _claude_completion() {
                             COMPREPLY=($(compgen -W "user project local managed" -- "$cur"))
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--scope --yes --help -s -y -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--json --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;
@@ -630,21 +630,22 @@ _claude_completion() {
         # Background session commands. Their `--help` output is a hand-written
         # usage line with no `Options:` section, so the only flags any of them
         # documents are the ones spelled out in that usage line (`respawn --all`,
-        # `rm --discard-unpushed`) -- not even -h/--help. <id> is the short id
-        # `claude --bg` prints; it is runtime state, so no candidates.
+        # `rm --discard-unpushed` / `--force-remove-worktree`) -- not even
+        # -h/--help. <id> is the short id `claude --bg` prints; it is runtime
+        # state, so no candidates.
         attach|logs|stop|kill)
             COMPREPLY=()
             ;;
         rm)
             case "$prev" in
-                # `<commit>@<worktree-id>`, echoed by an earlier `claude rm <id>`.
-                # Runtime state, so no candidates.
-                --discard-unpushed)
+                # `<commit>@<worktree-id>` and `<worktree-id>`, both echoed by an
+                # earlier `claude rm <id>`. Runtime state, so no candidates.
+                --discard-unpushed|--force-remove-worktree)
                     COMPREPLY=()
                     ;;
                 *)
                     if [[ "$cur" == -* ]]; then
-                        COMPREPLY=($(compgen -W "--discard-unpushed" -- "$cur"))
+                        COMPREPLY=($(compgen -W "--discard-unpushed --force-remove-worktree" -- "$cur"))
                     else
                         COMPREPLY=()
                     fi
