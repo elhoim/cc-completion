@@ -269,7 +269,7 @@ claude --settings <TAB>
   - `details` - Show a plugin's component inventory and projected token cost
   - `disable` - Disable an enabled plugin (with `--all`, `--json`, `--scope` options)
   - `enable` - Enable a disabled plugin (with `--json`, `--scope` options)
-  - `eval` - Run eval cases against a plugin and report scored results (with `--ablation`, `--allow-tools`, `--case`, `--eval-dir`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--mocks`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--verbose` options; `--json` optionally takes a `.json` output path)
+  - `eval` - Run eval cases against a plugin and report scored results (with `--ablation`, `--allow-real-servers`, `--allow-tools`, `--case`, `--concurrency`, `--eval-dir`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--mocks`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--trust-plugin`, `--verbose` options; `--json` optionally takes a `.json` output path)
     - `init` - Author an eval suite under the eval dir (`evals/` by default) via an interview (with `--bare`, `--eval-dir`, `--interactive` options)
   - `init` (`new`) - Scaffold a new plugin (with `--author`, `--author-email`, `--description`, `--force`, `--with` options)
   - `install` (`i`) - Install a plugin from available marketplaces (with `--config`, `--json`, `--scope`, `--yes` options)

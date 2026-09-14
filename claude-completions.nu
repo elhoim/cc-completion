@@ -328,8 +328,10 @@ export extern "claude plugin enable" [
 # Run eval cases against a plugin and report scored results
 export extern "claude plugin eval" [
     --ablation: string@"nu-complete claude eval-ablation"   # Run a no-plugin baseline arm and report the score delta
+    --allow-real-servers                                   # With --mocks record: also start real MCP servers that have no mock
     --allow-tools: string@"nu-complete claude tools"        # Operator grant for gated tools (repeatable)
     --case: string                                          # Filter cases by name glob
+    --concurrency(-j): int                                  # Run up to <n> agent runs at once (1-8; default 1)
     --eval-dir: path                                        # Directory (below the plugin) that holds the eval cases
     --json                                                  # Print the full run result as JSON to stdout
     --judge-model: string@"nu-complete claude models"       # Override LLM-grader model (default: haiku)
@@ -346,6 +348,7 @@ export extern "claude plugin eval" [
     --scaffold                                             # Run each case's scaffold_script
     --tag: string                                          # Filter cases by tag (repeatable)
     --threshold: string                                     # Exit 1 if any case score is below this threshold
+    --trust-plugin                                         # Assert that you trust this plugin and skip the first-run trust prompt
     --verbose                                              # Log per-message trace events to the debug log
     --help(-h)
     target?: string                                         # Path, plugin name, or plugin@marketplace id
@@ -550,8 +553,10 @@ export extern "claude plugins enable" [
 # Run eval cases against a plugin and report scored results
 export extern "claude plugins eval" [
     --ablation: string@"nu-complete claude eval-ablation"   # Run a no-plugin baseline arm and report the score delta
+    --allow-real-servers                                   # With --mocks record: also start real MCP servers that have no mock
     --allow-tools: string@"nu-complete claude tools"        # Operator grant for gated tools (repeatable)
     --case: string                                          # Filter cases by name glob
+    --concurrency(-j): int                                  # Run up to <n> agent runs at once (1-8; default 1)
     --eval-dir: path                                        # Directory (below the plugin) that holds the eval cases
     --json                                                  # Print the full run result as JSON to stdout
     --judge-model: string@"nu-complete claude models"       # Override LLM-grader model (default: haiku)
@@ -568,6 +573,7 @@ export extern "claude plugins eval" [
     --scaffold                                             # Run each case's scaffold_script
     --tag: string                                          # Filter cases by tag (repeatable)
     --threshold: string                                     # Exit 1 if any case score is below this threshold
+    --trust-plugin                                         # Assert that you trust this plugin and skip the first-run trust prompt
     --verbose                                              # Log per-message trace events to the debug log
     --help(-h)
     target?: string                                         # Path, plugin name, or plugin@marketplace id

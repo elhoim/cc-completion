@@ -394,8 +394,10 @@ _claude() {
                                     local -a eval_opts
                                     eval_opts=(
                                         '--ablation[Run a no-plugin baseline arm and report the score delta]:mode:(none with-without)'
+                                        '--allow-real-servers[With --mocks record: also start the plugin'\''s real MCP servers that have no mock]'
                                         '*--allow-tools[Operator grant for gated tools]:tools:_claude_tools'
                                         '--case[Filter cases by name glob]:glob:'
+                                        {-j,--concurrency}'[Run up to <n> agent runs at once (1-8)]:n:(1 2 3 4 5 6 7 8)'
                                         '--eval-dir[Directory (below the plugin) that holds the eval cases]:dir:_files -/'
                                         '--json[Print the full run result as JSON to stdout, or write it to this .json file]::path:_files'
                                         '--judge-model[Override LLM-grader model]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)'
@@ -412,6 +414,7 @@ _claude() {
                                         '--scaffold[Run each case'\''s scaffold_script]'
                                         '*--tag[Filter cases by tag (repeatable)]:tag:'
                                         '--threshold[Exit 1 if any case score is below this threshold]:threshold:'
+                                        '--trust-plugin[Assert that you trust this plugin and skip the first-run trust prompt (for CI)]'
                                         '--verbose[Log per-message trace events to the debug log]'
                                         {-h,--help}'[Display help for command]'
                                     )

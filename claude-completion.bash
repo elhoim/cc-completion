@@ -398,7 +398,7 @@ _claude_completion() {
                     # `claude plugin eval --eval-dir cases init` finds `init`
                     # rather than mistaking the value `cases` for the subcommand.
                     local eval_value_flags="
-                        --ablation --allow-tools --case --eval-dir --json --judge-model
+                        --ablation --allow-tools --case --concurrency -j --eval-dir --json --judge-model
                         --max-cost-usd --mocks --model --output-dir --report --runs --tag --threshold
                     "
                     local _evf=" ${eval_value_flags//[$'\n\t']/ } "
@@ -429,6 +429,13 @@ _claude_completion() {
                                 --ablation)
                                     COMPREPLY=($(compgen -W "none with-without" -- "$cur"))
                                     ;;
+                                # `--help` documents a closed 1-8 range, so the
+                                # values are enumerated (unlike --runs / --threshold,
+                                # which have no documented upper bound).
+                                --concurrency|-j)
+                                    COMPREPLY=($(compgen -W "1 2 3 4 5 6 7 8" -- "$cur"))
+                                    compopt -o nosort 2>/dev/null
+                                    ;;
                                 --mocks)
                                     COMPREPLY=($(compgen -W "record off" -- "$cur"))
                                     ;;
@@ -445,7 +452,7 @@ _claude_completion() {
                                     COMPREPLY=()
                                     ;;
                                 *)
-                                    COMPREPLY=($(compgen -W "init --ablation --allow-tools --case --eval-dir --json --judge-model --keep-temp --max-cost-usd --mocks --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --verbose --help -h" -- "$cur"))
+                                    COMPREPLY=($(compgen -W "init --ablation --allow-real-servers --allow-tools --case --concurrency --eval-dir --json --judge-model --keep-temp --max-cost-usd --mocks --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --trust-plugin --verbose --help -j -h" -- "$cur"))
                                     ;;
                             esac
                             ;;
