@@ -920,7 +920,7 @@ export extern "claude ultrareview" [
     --json                                                  # Print the raw bugs.json payload instead of formatted findings
     --no-post                                               # Do not post the findings to the PR (the default)
     --post                                                  # Post the finished review's findings to the PR as you (PR targets only)
-    --timeout: int                                          # Maximum minutes to wait for the review to finish (default: 30)
+    --timeout: int                                          # Maximum minutes to wait for the review to finish (default: 45)
     --help(-h)
     target?: string                                         # PR number, branch, or other target
 ]
