@@ -463,11 +463,11 @@ _claude_completion() {
                         -s|--scope)
                             COMPREPLY=($(compgen -W "user project local" -- "$cur"))
                             ;;
-                        --config)
+                        --accept-command|--config)
                             COMPREPLY=()
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--config --json --scope --yes --help -s -y -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--accept-command --config --json --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;
@@ -532,8 +532,11 @@ _claude_completion() {
                         -s|--scope)
                             COMPREPLY=($(compgen -W "user project local managed" -- "$cur"))
                             ;;
+                        --accept-command)
+                            COMPREPLY=()
+                            ;;
                         *)
-                            COMPREPLY=($(compgen -W "--json --scope --yes --help -s -y -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--accept-command --json --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;

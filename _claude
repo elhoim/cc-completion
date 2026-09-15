@@ -469,6 +469,7 @@ _claude() {
                                     ;;
                                 install|i)
                                     _arguments \
+                                        '--accept-command[Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)]:sha256:' \
                                         '--config[Set a userConfig option from the plugin manifest (repeatable)]:key=value:' \
                                         '--json[Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)]' \
                                         {-s,--scope}'[Installation scope]:scope:(user project local)' \
@@ -522,6 +523,7 @@ _claude() {
                                     ;;
                                 update)
                                     _arguments \
+                                        '--accept-command[Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)]:sha256:' \
                                         '--json[Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)]' \
                                         {-s,--scope}'[Installation scope]:scope:(user project local managed)' \
                                         {-y,--yes}'[Accept the displayed marketplace-declared command (changed install or headersHelper) without the confirmation prompt]' \

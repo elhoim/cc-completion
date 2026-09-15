@@ -272,13 +272,13 @@ claude --settings <TAB>
   - `eval` - プラグインに対して eval ケースを実行しスコア結果を報告 (`--ablation`, `--allow-real-servers`, `--allow-tools`, `--case`, `--concurrency`, `--eval-dir`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--mocks`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--trust-plugin`, `--verbose` オプション付き。`--json` は出力先の `.json` パスを任意で取る)
     - `init` - インタビュー形式で eval ディレクトリ (既定は `evals/`) 配下に eval スイートを作成 (`--bare`, `--eval-dir`, `--interactive` オプション付き)
   - `init` (`new`) - 新しいプラグインの雛形を作成 (`--author`, `--author-email`, `--description`, `--force`, `--with` オプション付き)
-  - `install` (`i`) - 利用可能なマーケットプレイスからプラグインをインストール (`--config`, `--json`, `--scope`, `--yes` オプション付き)
+  - `install` (`i`) - 利用可能なマーケットプレイスからプラグインをインストール (`--accept-command`, `--config`, `--json`, `--scope`, `--yes` オプション付き)
   - `list` - インストール済みのプラグインを一覧表示 (`--available`, `--json` オプション付き)
   - `marketplace` - Claude Code マーケットプレイスの管理 (`add`, `list`, `remove` (`rm`), `update`); `add` は `--claudeai`, `--scope`, `--sparse`、`list` は `--json`、`remove`/`rm` は `--scope` をサポート
   - `prune` (`autoremove`) - 不要になった自動インストール依存を削除 (`--dry-run`, `--scope`, `--yes` オプション付き)
   - `tag` - プラグインリリース用に `{name}--v{version}` の git タグを作成 (`--dry-run`, `--force`, `--message`, `--push`, `--remote` オプション付き)
   - `uninstall` (`remove`) - インストール済みのプラグインをアンインストール (`--json`, `--keep-data`, `--prune`, `--scope`, `--yes` オプション付き)
-  - `update` - プラグインを最新バージョンに更新 (`--json`, `--scope`, `--yes` オプション付き)
+  - `update` - プラグインを最新バージョンに更新 (`--accept-command`, `--json`, `--scope`, `--yes` オプション付き)
   - `validate` - プラグインまたはマーケットプレイスのマニフェストを検証 (`--json`, `--strict` オプション付き)
 - `project` - Claude Code プロジェクト状態の管理
   - `purge` - プロジェクトの Claude Code 状態 (トランスクリプト、タスク、ファイル履歴、設定エントリ) をすべて削除 (`--all`, `--dry-run`, `--interactive`, `--yes` オプション付き)

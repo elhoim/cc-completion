@@ -272,13 +272,13 @@ claude --settings <TAB>
   - `eval` - Run eval cases against a plugin and report scored results (with `--ablation`, `--allow-real-servers`, `--allow-tools`, `--case`, `--concurrency`, `--eval-dir`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--mocks`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--trust-plugin`, `--verbose` options; `--json` optionally takes a `.json` output path)
     - `init` - Author an eval suite under the eval dir (`evals/` by default) via an interview (with `--bare`, `--eval-dir`, `--interactive` options)
   - `init` (`new`) - Scaffold a new plugin (with `--author`, `--author-email`, `--description`, `--force`, `--with` options)
-  - `install` (`i`) - Install a plugin from available marketplaces (with `--config`, `--json`, `--scope`, `--yes` options)
+  - `install` (`i`) - Install a plugin from available marketplaces (with `--accept-command`, `--config`, `--json`, `--scope`, `--yes` options)
   - `list` - List installed plugins (with `--available`, `--json` options)
   - `marketplace` - Manage Claude Code marketplaces (`add`, `list`, `remove` (`rm`), `update`); `add` supports `--claudeai`, `--scope`, `--sparse`; `list` supports `--json`; `remove`/`rm` support `--scope`
   - `prune` (`autoremove`) - Remove auto-installed dependencies that are no longer needed (with `--dry-run`, `--scope`, `--yes` options)
   - `tag` - Create a `{name}--v{version}` git tag for a plugin release (with `--dry-run`, `--force`, `--message`, `--push`, `--remote` options)
   - `uninstall` (`remove`) - Uninstall an installed plugin (with `--json`, `--keep-data`, `--prune`, `--scope`, `--yes` options)
-  - `update` - Update a plugin to the latest version (with `--json`, `--scope`, `--yes` options)
+  - `update` - Update a plugin to the latest version (with `--accept-command`, `--json`, `--scope`, `--yes` options)
   - `validate` - Validate a plugin or marketplace manifest (with `--json`, `--strict` options)
 - `project` - Manage Claude Code project state
   - `purge` - Delete all Claude Code state for a project (transcripts, tasks, file history, config entry) (with `--all`, `--dry-run`, `--interactive`, `--yes` options)
