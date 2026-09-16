@@ -94,8 +94,8 @@ def "nu-complete claude tools" [] {
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
-        Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
-        SendUserFile SendFile SendFeedback SendUserMessage EndConversation
+        AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
+        SendUserFile SendFile SendFeedback SendUserMessage FetchInboxMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
         ShareOnboardingGuide ShowOnboardingRolePicker SuggestPluginInstall SuggestSkills
         default
