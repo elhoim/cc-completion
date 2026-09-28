@@ -84,11 +84,11 @@ def "nu-complete claude plugin-component" [] {
 # all tools, "default" to use all tools').
 def "nu-complete claude tools" [] {
     [
-        Bash PowerShell REPL
+        Bash PowerShell
         Read Write Edit NotebookEdit Glob Grep LSP
         WebFetch WebSearch
         Agent ListAgents Skill SendMessage SubagentHandback Workflow ToolSearch
-        TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate
+        TaskCreate TaskGet TaskList TaskStop TaskUpdate GetTask
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications Poll
         EnterWorktree ExitWorktree
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
@@ -157,6 +157,7 @@ export extern claude [
     --disable-slash-commands                                 # Disable all skills
     --chrome                                                # Enable Chrome
     --no-chrome                                             # Disable Chrome
+    --client-data-url: string                               # URL for a signed configuration document
     --background                                            # Start the session as a background agent
     --bg                                                    # Start the session as a background agent (alias)
     --from-pr: string                                       # From PR
@@ -390,6 +391,7 @@ export extern "claude plugin install" [
     --accept-command: string                                # Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
+    --registry: string                                      # For a <package>@npm install, resolve and download from this npm registry
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -498,6 +500,7 @@ export extern "claude plugin i" [
     --accept-command: string                                # Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
+    --registry: string                                      # For a <package>@npm install, resolve and download from this npm registry
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -618,6 +621,7 @@ export extern "claude plugins install" [
     --accept-command: string                                # Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
+    --registry: string                                      # For a <package>@npm install, resolve and download from this npm registry
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -726,6 +730,7 @@ export extern "claude plugins i" [
     --accept-command: string                                # Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
+    --registry: string                                      # For a <package>@npm install, resolve and download from this npm registry
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)

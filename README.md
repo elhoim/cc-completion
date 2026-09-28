@@ -272,7 +272,7 @@ claude --settings <TAB>
   - `eval` - Run eval cases against a plugin and report scored results (with `--ablation`, `--allow-real-servers`, `--allow-tools`, `--case`, `--concurrency`, `--eval-dir`, `--json`, `--judge-model`, `--keep-temp`, `--max-cost-usd`, `--mocks`, `--model`, `--no-publish`, `--no-scaffold`, `--output-dir`, `--publish-report`, `--report`, `--runs`, `--scaffold`, `--tag`, `--threshold`, `--trust-plugin`, `--verbose` options; `--json` optionally takes a `.json` output path)
     - `init` - Author an eval suite under the eval dir (`evals/` by default) via an interview (with `--bare`, `--eval-dir`, `--interactive` options)
   - `init` (`new`) - Scaffold a new plugin (with `--author`, `--author-email`, `--description`, `--force`, `--with` options)
-  - `install` (`i`) - Install a plugin from available marketplaces (with `--accept-command`, `--config`, `--json`, `--scope`, `--yes` options)
+  - `install` (`i`) - Install a plugin from available marketplaces (with `--accept-command`, `--config`, `--json`, `--registry`, `--scope`, `--yes` options)
   - `list` - List installed plugins (with `--available`, `--json` options)
   - `marketplace` - Manage Claude Code marketplaces (`add`, `list`, `remove` (`rm`), `update`); `add` supports `--claudeai`, `--scope`, `--sparse`; `list` supports `--json`; `remove`/`rm` support `--scope`
   - `prune` (`autoremove`) - Remove auto-installed dependencies that are no longer needed (with `--dry-run`, `--scope`, `--yes` options)

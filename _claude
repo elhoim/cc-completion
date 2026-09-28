@@ -9,11 +9,11 @@
 # offered here. "default" comes from the --tools help text ('Use "" to disable
 # all tools, "default" to use all tools').
 _claude_tools() {
-    compadd -- Bash PowerShell REPL \
+    compadd -- Bash PowerShell \
         Read Write Edit NotebookEdit Glob Grep LSP \
         WebFetch WebSearch \
         Agent ListAgents Skill SendMessage SubagentHandback Workflow ToolSearch \
-        TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate \
+        TaskCreate TaskGet TaskList TaskStop TaskUpdate GetTask \
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications Poll \
         EnterWorktree ExitWorktree \
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal \
@@ -101,6 +101,7 @@ _claude() {
         '--disable-slash-commands[Disable all skills]'
         '--chrome[Enable Claude in Chrome integration]'
         '--no-chrome[Disable Claude in Chrome integration]'
+        '--client-data-url[URL for a signed configuration document]:url:'
         '--remote-control[Start an interactive session with Remote Control enabled (optionally named)]::name:'
         '--remote-control-session-name-prefix[Prefix for auto-generated Remote Control session names]:prefix:'
         '--from-pr[Resume session associated with a PR]::pr:'
@@ -472,6 +473,7 @@ _claude() {
                                         '--accept-command[Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)]:sha256:' \
                                         '--config[Set a userConfig option from the plugin manifest (repeatable)]:key=value:' \
                                         '--json[Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)]' \
+                                        '--registry[For a <package>@npm install, resolve and download from this npm registry]:url:' \
                                         {-s,--scope}'[Installation scope]:scope:(user project local)' \
                                         {-y,--yes}'[Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt]' \
                                         {-h,--help}'[Display help for command]'

@@ -22,7 +22,7 @@ _claude_completion() {
         --continue --resume --fork-session --no-session-persistence
         --model --agent --betas --fallback-model --settings --add-dir
         --ide --strict-mcp-config --session-id --agents --setting-sources
-        --plugin-dir --plugin-url --disable-slash-commands --chrome --no-chrome
+        --plugin-dir --plugin-url --disable-slash-commands --chrome --no-chrome --client-data-url
         --from-pr --file --worktree --tmux --remote-control --remote-control-session-name-prefix
         --cloud --environment --teleport
         --ax-screen-reader --bare --brief --prompt-suggestions --safe-mode
@@ -44,7 +44,7 @@ _claude_completion() {
         --file --debug-file --tools --allowedTools --allowed-tools
         --disallowedTools --disallowed-tools --json-schema --system-prompt
         --append-system-prompt --system-prompt-snapshot --agents --max-budget-usd --session-id
-        --agent --betas --name -n --plugin-url --remote-control-session-name-prefix
+        --agent --betas --name -n --plugin-url --client-data-url --remote-control-session-name-prefix
         -d --debug --from-pr -r --resume -w --worktree --remote-control
         --prompt-suggestions --autocompact
         --cloud --environment --teleport
@@ -57,11 +57,11 @@ _claude_completion() {
     # but are not offered here. "default" comes from the --tools help text
     # ('Use "" to disable all tools, "default" to use all tools').
     local tool_names="
-        Bash PowerShell REPL
+        Bash PowerShell
         Read Write Edit NotebookEdit Glob Grep LSP
         WebFetch WebSearch
         Agent ListAgents Skill SendMessage SubagentHandback Workflow ToolSearch
-        TaskCreate TaskGet TaskList TaskOutput TaskStop TaskUpdate
+        TaskCreate TaskGet TaskList TaskStop TaskUpdate GetTask
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications Poll
         EnterWorktree ExitWorktree
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
@@ -174,7 +174,7 @@ _claude_completion() {
         # exist yet. Local path completion would be misleading, so offer none.
         --json-schema|--system-prompt|--append-system-prompt|--agents|\
         --worktree|--max-budget-usd|--session-id|--debug|-d|--from-pr|\
-        -r|--resume|--agent|--betas|--name|-n|--plugin-url|--remote-control|\
+        -r|--resume|--agent|--betas|--name|-n|--plugin-url|--client-data-url|--remote-control|\
         --cloud|--environment|--teleport|\
         --file)
             COMPREPLY=()
@@ -463,11 +463,11 @@ _claude_completion() {
                         -s|--scope)
                             COMPREPLY=($(compgen -W "user project local" -- "$cur"))
                             ;;
-                        --accept-command|--config)
+                        --accept-command|--config|--registry)
                             COMPREPLY=()
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--accept-command --config --json --scope --yes --help -s -y -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--accept-command --config --json --registry --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;
