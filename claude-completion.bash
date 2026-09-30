@@ -26,7 +26,7 @@ _claude_completion() {
         --from-pr --file --worktree --tmux --remote-control --remote-control-session-name-prefix
         --cloud --environment --teleport
         --ax-screen-reader --bare --brief --prompt-suggestions --safe-mode
-        --restricted
+        --restricted --desktop
         --autocompact --effort --version --help
         --bg --background
         --name
@@ -340,7 +340,7 @@ _claude_completion() {
             esac
             ;;
         plugin|plugins)
-            local plugin_cmds="details disable enable eval init new install i list marketplace prune autoremove tag uninstall remove update validate"
+            local plugin_cmds="configure details disable enable eval init new install i list marketplace prune autoremove tag uninstall remove update validate"
             local plugin_subcmd psub_idx=0
             for ((i=cmd_idx+1; i < cword; i++)); do
                 if [[ ${words[i]} != -* ]]; then
@@ -485,7 +485,7 @@ _claude_completion() {
                     esac
                     ;;
                 list)
-                    COMPREPLY=($(compgen -W "--available --json --help -h" -- "$cur"))
+                    COMPREPLY=($(compgen -W "--available --data-size --json --help -h" -- "$cur"))
                     ;;
                 disable)
                     case "$prev" in
@@ -539,6 +539,9 @@ _claude_completion() {
                             COMPREPLY=($(compgen -W "--accept-command --json --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
+                    ;;
+                configure)
+                    COMPREPLY=($(compgen -W "--json --values-stdin --help -h" -- "$cur"))
                     ;;
                 details)
                     COMPREPLY=($(compgen -W "--help -h" -- "$cur"))

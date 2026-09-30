@@ -230,7 +230,7 @@ claude mcp add --transport <TAB>
 
 # plugin サブコマンドの補完
 claude plugin <TAB>
-# 表示: details disable enable eval init new install i list marketplace prune autoremove tag uninstall remove update validate
+# 表示: configure details disable enable eval init new install i list marketplace prune autoremove tag uninstall remove update validate
 
 # ファイルパスの補完
 claude --settings <TAB>
@@ -266,6 +266,7 @@ claude --settings <TAB>
   - `login` - MCP サーバーで認証 (`--no-browser` オプション付き)
   - `logout` - MCP サーバーの保存済み OAuth 認証情報をクリア
 - `plugin` - Claude Code プラグインの管理
+  - `configure` - プラグインのオプションと未設定の項目を表示、または `--values-stdin` で stdin から値を保存 (`--json`, `--values-stdin` オプション付き)
   - `details` - プラグインのコンポーネント一覧と推定トークンコストを表示
   - `disable` - 有効なプラグインを無効化 (`--all`, `--json`, `--scope` オプション付き)
   - `enable` - 無効なプラグインを有効化 (`--json`, `--scope` オプション付き)
@@ -273,7 +274,7 @@ claude --settings <TAB>
     - `init` - インタビュー形式で eval ディレクトリ (既定は `evals/`) 配下に eval スイートを作成 (`--bare`, `--eval-dir`, `--interactive` オプション付き)
   - `init` (`new`) - 新しいプラグインの雛形を作成 (`--author`, `--author-email`, `--description`, `--force`, `--with` オプション付き)
   - `install` (`i`) - 利用可能なマーケットプレイスからプラグインをインストール (`--accept-command`, `--config`, `--json`, `--registry`, `--scope`, `--yes` オプション付き)
-  - `list` - インストール済みのプラグインを一覧表示 (`--available`, `--json` オプション付き)
+  - `list` - インストール済みのプラグインを一覧表示 (`--available`, `--data-size`, `--json` オプション付き。`--data-size` はプラグイン名を任意で取る)
   - `marketplace` - Claude Code マーケットプレイスの管理 (`add`, `list`, `remove` (`rm`), `update`); `add` は `--claudeai`, `--scope`, `--sparse`、`list` は `--json`、`remove`/`rm` は `--scope` をサポート
   - `prune` (`autoremove`) - 不要になった自動インストール依存を削除 (`--dry-run`, `--scope`, `--yes` オプション付き)
   - `tag` - プラグインリリース用に `{name}--v{version}` の git タグを作成 (`--dry-run`, `--force`, `--message`, `--push`, `--remote` オプション付き)

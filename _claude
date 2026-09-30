@@ -98,6 +98,7 @@ _claude() {
         '--setting-sources[Comma-separated list of setting sources]:sources:(user project local)'
         '*--plugin-dir[Load a plugin from a directory or .zip]:paths:_files'
         '*--plugin-url[Fetch a plugin .zip from a URL for this session only]:url:'
+        '--desktop[Open in the Claude Desktop app instead of the terminal]'
         '--disable-slash-commands[Disable all skills]'
         '--chrome[Enable Claude in Chrome integration]'
         '--no-chrome[Disable Claude in Chrome integration]'
@@ -315,6 +316,7 @@ _claude() {
                 plugin|plugins)
                     local -a plugin_commands
                     plugin_commands=(
+                        'configure:Show a plugin'\''s options and which are unset, or save values from stdin'
                         'details:Show a plugin'\''s component inventory and projected token cost'
                         'disable:Disable an enabled plugin'
                         'enable:Enable a disabled plugin'
@@ -447,6 +449,13 @@ _claude() {
                                             ;;
                                     esac
                                     ;;
+                                configure)
+                                    _arguments \
+                                        '--json[Output as JSON]' \
+                                        '--values-stdin[Read option values from stdin as a JSON object of single-line strings]' \
+                                        {-h,--help}'[Display help for command]' \
+                                        '1:plugin:'
+                                    ;;
                                 details)
                                     _arguments \
                                         {-h,--help}'[Display help for command]'
@@ -491,6 +500,7 @@ _claude() {
                                 list)
                                     _arguments \
                                         '--available[Include available plugins from marketplaces (requires --json)]' \
+                                        '--data-size[Measure each installed plugin'\''s saved data directory, or only the named plugin'\''s (requires --json)]::plugin:' \
                                         '--json[Output as JSON]' \
                                         {-h,--help}'[Display help for command]'
                                     ;;

@@ -105,8 +105,8 @@ def "nu-complete claude tools" [] {
 # Nushell externs cannot express a named flag whose value is optional: giving a
 # flag a type makes the value mandatory, omitting it makes the flag a switch. So
 # the options `--help` writes as "[value]" (-d/--debug, -r/--resume, --from-pr,
-# -w/--worktree, --remote-control, --prompt-suggestions, plugin eval --json) are
-# declared here in whichever of the two forms matches their common usage. The
+# -w/--worktree, --remote-control, --prompt-suggestions, plugin eval --json,
+# plugin list --data-size) are declared here in whichever of the two forms matches their common usage. The
 # bash and zsh scripts do model the optional value.
 
 # Claude Code - starts an interactive session by default, use -p/--print for non-interactive output
@@ -154,6 +154,7 @@ export extern claude [
     --setting-sources: string@"nu-complete claude scope"    # Setting sources
     --plugin-dir: path                                      # Plugin directory
     --plugin-url: string                                    # Fetch a plugin .zip from a URL for this session only
+    --desktop                                               # Open in the Claude Desktop app instead of the terminal
     --disable-slash-commands                                 # Disable all skills
     --chrome                                                # Enable Chrome
     --no-chrome                                             # Disable Chrome
@@ -303,6 +304,14 @@ export extern "claude plugin" [
     ...args: string
 ]
 
+# Show a plugin's options and which are unset, or save values from stdin with --values-stdin
+export extern "claude plugin configure" [
+    plugin: string
+    --json                                                  # Output as JSON
+    --values-stdin                                          # Read option values from stdin as a JSON object of single-line strings
+    --help(-h)
+]
+
 # Show a plugin's component inventory and projected token cost
 export extern "claude plugin details" [
     --help(-h)
@@ -401,6 +410,7 @@ export extern "claude plugin install" [
 # List installed plugins
 export extern "claude plugin list" [
     --available                                             # Include available plugins from marketplaces (requires --json)
+    --data-size                                             # Measure each installed plugin's saved data directory (requires --json)
     --json                                                  # Output as JSON
     --help(-h)
 ]
@@ -533,6 +543,14 @@ export extern "claude plugins" [
     ...args: string
 ]
 
+# Show a plugin's options and which are unset, or save values from stdin with --values-stdin
+export extern "claude plugins configure" [
+    plugin: string
+    --json                                                  # Output as JSON
+    --values-stdin                                          # Read option values from stdin as a JSON object of single-line strings
+    --help(-h)
+]
+
 # Show a plugin's component inventory and projected token cost
 export extern "claude plugins details" [
     --help(-h)
@@ -631,6 +649,7 @@ export extern "claude plugins install" [
 # List installed plugins
 export extern "claude plugins list" [
     --available                                             # Include available plugins from marketplaces (requires --json)
+    --data-size                                             # Measure each installed plugin's saved data directory (requires --json)
     --json                                                  # Output as JSON
     --help(-h)
 ]

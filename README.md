@@ -230,7 +230,7 @@ claude mcp add --transport <TAB>
 
 # Complete plugin subcommands
 claude plugin <TAB>
-# Shows: details disable enable eval init new install i list marketplace prune autoremove tag uninstall remove update validate
+# Shows: configure details disable enable eval init new install i list marketplace prune autoremove tag uninstall remove update validate
 
 # File path completion
 claude --settings <TAB>
@@ -266,6 +266,7 @@ claude --settings <TAB>
   - `login` - Authenticate with an MCP server (with `--no-browser` option)
   - `logout` - Clear stored OAuth credentials for an MCP server
 - `plugin` - Manage Claude Code plugins
+  - `configure` - Show a plugin's options and which are unset, or save values from stdin with `--values-stdin` (with `--json`, `--values-stdin` options)
   - `details` - Show a plugin's component inventory and projected token cost
   - `disable` - Disable an enabled plugin (with `--all`, `--json`, `--scope` options)
   - `enable` - Enable a disabled plugin (with `--json`, `--scope` options)
@@ -273,7 +274,7 @@ claude --settings <TAB>
     - `init` - Author an eval suite under the eval dir (`evals/` by default) via an interview (with `--bare`, `--eval-dir`, `--interactive` options)
   - `init` (`new`) - Scaffold a new plugin (with `--author`, `--author-email`, `--description`, `--force`, `--with` options)
   - `install` (`i`) - Install a plugin from available marketplaces (with `--accept-command`, `--config`, `--json`, `--registry`, `--scope`, `--yes` options)
-  - `list` - List installed plugins (with `--available`, `--json` options)
+  - `list` - List installed plugins (with `--available`, `--data-size`, `--json` options; `--data-size` optionally takes a plugin name)
   - `marketplace` - Manage Claude Code marketplaces (`add`, `list`, `remove` (`rm`), `update`); `add` supports `--claudeai`, `--scope`, `--sparse`; `list` supports `--json`; `remove`/`rm` support `--scope`
   - `prune` (`autoremove`) - Remove auto-installed dependencies that are no longer needed (with `--dry-run`, `--scope`, `--yes` options)
   - `tag` - Create a `{name}--v{version}` git tag for a plugin release (with `--dry-run`, `--force`, `--message`, `--push`, `--remote` options)
