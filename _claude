@@ -330,6 +330,7 @@ _claude() {
                         'prune:Remove auto-installed dependencies that are no longer needed'
                         'autoremove:Remove auto-installed dependencies (alias for prune)'
                         'tag:Create a {name}--v{version} git tag for a plugin release'
+                        'test:Run a mod'\''s tests'
                         'uninstall:Uninstall an installed plugin'
                         'remove:Uninstall an installed plugin (alias for uninstall)'
                         'update:Update a plugin to the latest version'
@@ -476,6 +477,11 @@ _claude() {
                                         '--remote[Remote to push to with --push]:remote:' \
                                         {-h,--help}'[Display help for command]' \
                                         '1:path:_files -/'
+                                    ;;
+                                test)
+                                    _arguments \
+                                        {-h,--help}'[Display help for command]' \
+                                        '1:dir:_files -/'
                                     ;;
                                 install|i)
                                     _arguments \

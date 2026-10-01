@@ -340,7 +340,7 @@ _claude_completion() {
             esac
             ;;
         plugin|plugins)
-            local plugin_cmds="configure details disable enable eval init new install i list marketplace prune autoremove tag uninstall remove update validate"
+            local plugin_cmds="configure details disable enable eval init new install i list marketplace prune autoremove tag test uninstall remove update validate"
             local plugin_subcmd psub_idx=0
             for ((i=cmd_idx+1; i < cword; i++)); do
                 if [[ ${words[i]} != -* ]]; then
@@ -567,6 +567,14 @@ _claude_completion() {
                             fi
                             ;;
                     esac
+                    ;;
+                test)
+                    if [[ "$cur" == -* ]]; then
+                        COMPREPLY=($(compgen -W "--help -h" -- "$cur"))
+                    else
+                        # [dir] is the mod's folder (default: the current folder).
+                        _filedir -d
+                    fi
                     ;;
                 *)
                     COMPREPLY=($(compgen -W "$plugin_cmds --help -h" -- "$cur"))

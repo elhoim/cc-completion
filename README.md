@@ -230,7 +230,7 @@ claude mcp add --transport <TAB>
 
 # Complete plugin subcommands
 claude plugin <TAB>
-# Shows: configure details disable enable eval init new install i list marketplace prune autoremove tag uninstall remove update validate
+# Shows: configure details disable enable eval init new install i list marketplace prune autoremove tag test uninstall remove update validate
 
 # File path completion
 claude --settings <TAB>
@@ -278,6 +278,7 @@ claude --settings <TAB>
   - `marketplace` - Manage Claude Code marketplaces (`add`, `list`, `remove` (`rm`), `update`); `add` supports `--claudeai`, `--scope`, `--sparse`; `list` supports `--json`; `remove`/`rm` support `--scope`
   - `prune` (`autoremove`) - Remove auto-installed dependencies that are no longer needed (with `--dry-run`, `--scope`, `--yes` options)
   - `tag` - Create a `{name}--v{version}` git tag for a plugin release (with `--dry-run`, `--force`, `--message`, `--push`, `--remote` options)
+  - `test` - Run a mod's tests
   - `uninstall` (`remove`) - Uninstall an installed plugin (with `--json`, `--keep-data`, `--prune`, `--scope`, `--yes` options)
   - `update` - Update a plugin to the latest version (with `--accept-command`, `--json`, `--scope`, `--yes` options)
   - `validate` - Validate a plugin or marketplace manifest (with `--json`, `--strict` options)

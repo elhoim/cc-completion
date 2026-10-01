@@ -505,6 +505,12 @@ export extern "claude plugin tag" [
     path?: path                                             # Plugin directory path
 ]
 
+# Run a mod's tests
+export extern "claude plugin test" [
+    --help(-h)
+    dir?: path                                              # The mod's folder (default: the current folder)
+]
+
 # Install a plugin (alias for install)
 export extern "claude plugin i" [
     --accept-command: string                                # Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)
@@ -742,6 +748,12 @@ export extern "claude plugins tag" [
     --remote: string                                        # Remote to push to with --push (default: "origin")
     --help(-h)
     path?: path                                             # Plugin directory path
+]
+
+# Run a mod's tests
+export extern "claude plugins test" [
+    --help(-h)
+    dir?: path                                              # The mod's folder (default: the current folder)
 ]
 
 # Install a plugin (alias for install)
