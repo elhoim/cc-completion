@@ -158,7 +158,6 @@ export extern claude [
     --disable-slash-commands                                 # Disable all skills
     --chrome                                                # Enable Chrome
     --no-chrome                                             # Disable Chrome
-    --client-data-url: string                               # URL for a signed configuration document
     --background                                            # Start the session as a background agent
     --bg                                                    # Start the session as a background agent (alias)
     --from-pr: string                                       # From PR
@@ -424,6 +423,7 @@ export extern "claude plugin marketplace" [
 # Add a marketplace
 export extern "claude plugin marketplace add" [
     --claudeai                                              # Add the marketplace that claude.ai hosts for you
+    --json                                                  # Print one machine-readable result line as the last line on stdout (same exit codes)
     --scope: string@"nu-complete claude scope"              # Where to declare the marketplace
     --sparse: string                                         # Limit checkout to specific directories
     --help(-h)
@@ -438,6 +438,7 @@ export extern "claude plugin marketplace list" [
 
 # Remove a marketplace
 export extern "claude plugin marketplace remove" [
+    --json                                                  # Print one machine-readable result line as the last line on stdout (same exit codes)
     --scope: string@"nu-complete claude scope"               # Remove from specific settings scope
     --help(-h)
     ...args: string
@@ -445,6 +446,7 @@ export extern "claude plugin marketplace remove" [
 
 # Update a marketplace
 export extern "claude plugin marketplace update" [
+    --json                                                  # With a marketplace name: print one machine-readable result line as the last line on stdout (same exit codes)
     --help(-h)
     ...args: string
 ]
@@ -536,6 +538,7 @@ export extern "claude plugin remove" [
 
 # Remove a marketplace (alias for remove)
 export extern "claude plugin marketplace rm" [
+    --json                                                  # Print one machine-readable result line as the last line on stdout (same exit codes)
     --scope: string@"nu-complete claude scope"               # Remove from specific settings scope
     --help(-h)
     ...args: string
@@ -669,6 +672,7 @@ export extern "claude plugins marketplace" [
 # Add a marketplace
 export extern "claude plugins marketplace add" [
     --claudeai                                              # Add the marketplace that claude.ai hosts for you
+    --json                                                  # Print one machine-readable result line as the last line on stdout (same exit codes)
     --scope: string@"nu-complete claude scope"              # Where to declare the marketplace
     --sparse: string                                         # Limit checkout to specific directories
     --help(-h)
@@ -683,6 +687,7 @@ export extern "claude plugins marketplace list" [
 
 # Remove a marketplace
 export extern "claude plugins marketplace remove" [
+    --json                                                  # Print one machine-readable result line as the last line on stdout (same exit codes)
     --scope: string@"nu-complete claude scope"               # Remove from specific settings scope
     --help(-h)
     ...args: string
@@ -690,6 +695,7 @@ export extern "claude plugins marketplace remove" [
 
 # Update a marketplace
 export extern "claude plugins marketplace update" [
+    --json                                                  # With a marketplace name: print one machine-readable result line as the last line on stdout (same exit codes)
     --help(-h)
     ...args: string
 ]
@@ -781,6 +787,7 @@ export extern "claude plugins remove" [
 
 # Remove a marketplace (alias for remove)
 export extern "claude plugins marketplace rm" [
+    --json                                                  # Print one machine-readable result line as the last line on stdout (same exit codes)
     --scope: string@"nu-complete claude scope"               # Remove from specific settings scope
     --help(-h)
     ...args: string

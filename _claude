@@ -102,7 +102,6 @@ _claude() {
         '--disable-slash-commands[Disable all skills]'
         '--chrome[Enable Claude in Chrome integration]'
         '--no-chrome[Disable Claude in Chrome integration]'
-        '--client-data-url[URL for a signed configuration document]:url:'
         '--remote-control[Start an interactive session with Remote Control enabled (optionally named)]::name:'
         '--remote-control-session-name-prefix[Prefix for auto-generated Remote Control session names]:prefix:'
         '--from-pr[Resume session associated with a PR]::pr:'
@@ -368,6 +367,7 @@ _claude() {
                                                 add)
                                                     _arguments \
                                                         '--claudeai[Add the marketplace of this name that claude.ai hosts for you]' \
+                                                        '--json[Print one machine-readable result line as the last line on stdout (same exit codes)]' \
                                                         '--scope[Where to declare the marketplace]:scope:(user project local)' \
                                                         '--sparse[Limit checkout to specific directories via git sparse-checkout]:paths:' \
                                                         {-h,--help}'[Display help for command]'
@@ -379,7 +379,13 @@ _claude() {
                                                     ;;
                                                 remove|rm)
                                                     _arguments \
+                                                        '--json[Print one machine-readable result line as the last line on stdout (same exit codes)]' \
                                                         '--scope[Remove the marketplace from a specific scope]:scope:(user project local)' \
+                                                        {-h,--help}'[Display help for command]'
+                                                    ;;
+                                                update)
+                                                    _arguments \
+                                                        '--json[With a marketplace name: print one machine-readable result line as the last line on stdout (same exit codes)]' \
                                                         {-h,--help}'[Display help for command]'
                                                     ;;
                                                 *)

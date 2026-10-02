@@ -275,7 +275,7 @@ claude --settings <TAB>
   - `init` (`new`) - 新しいプラグインの雛形を作成 (`--author`, `--author-email`, `--description`, `--force`, `--with` オプション付き)
   - `install` (`i`) - 利用可能なマーケットプレイスからプラグインをインストール (`--accept-command`, `--config`, `--json`, `--registry`, `--scope`, `--yes` オプション付き)
   - `list` - インストール済みのプラグインを一覧表示 (`--available`, `--data-size`, `--json` オプション付き。`--data-size` はプラグイン名を任意で取る)
-  - `marketplace` - Claude Code マーケットプレイスの管理 (`add`, `list`, `remove` (`rm`), `update`); `add` は `--claudeai`, `--scope`, `--sparse`、`list` は `--json`、`remove`/`rm` は `--scope` をサポート
+  - `marketplace` - Claude Code マーケットプレイスの管理 (`add`, `list`, `remove` (`rm`), `update`); `add` は `--claudeai`, `--json`, `--scope`, `--sparse`、`list` と `update` は `--json`、`remove`/`rm` は `--json`, `--scope` をサポート
   - `prune` (`autoremove`) - 不要になった自動インストール依存を削除 (`--dry-run`, `--scope`, `--yes` オプション付き)
   - `tag` - プラグインリリース用に `{name}--v{version}` の git タグを作成 (`--dry-run`, `--force`, `--message`, `--push`, `--remote` オプション付き)
   - `test` - mod のテストを実行

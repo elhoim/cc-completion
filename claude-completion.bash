@@ -22,7 +22,7 @@ _claude_completion() {
         --continue --resume --fork-session --no-session-persistence
         --model --agent --betas --fallback-model --settings --add-dir
         --ide --strict-mcp-config --session-id --agents --setting-sources
-        --plugin-dir --plugin-url --disable-slash-commands --chrome --no-chrome --client-data-url
+        --plugin-dir --plugin-url --disable-slash-commands --chrome --no-chrome
         --from-pr --file --worktree --tmux --remote-control --remote-control-session-name-prefix
         --cloud --environment --teleport
         --ax-screen-reader --bare --brief --prompt-suggestions --safe-mode
@@ -44,7 +44,7 @@ _claude_completion() {
         --file --debug-file --tools --allowedTools --allowed-tools
         --disallowedTools --disallowed-tools --json-schema --system-prompt
         --append-system-prompt --system-prompt-snapshot --agents --max-budget-usd --session-id
-        --agent --betas --name -n --plugin-url --client-data-url --remote-control-session-name-prefix
+        --agent --betas --name -n --plugin-url --remote-control-session-name-prefix
         -d --debug --from-pr -r --resume -w --worktree --remote-control
         --prompt-suggestions --autocompact
         --cloud --environment --teleport
@@ -174,7 +174,7 @@ _claude_completion() {
         # exist yet. Local path completion would be misleading, so offer none.
         --json-schema|--system-prompt|--append-system-prompt|--agents|\
         --worktree|--max-budget-usd|--session-id|--debug|-d|--from-pr|\
-        -r|--resume|--agent|--betas|--name|-n|--plugin-url|--client-data-url|--remote-control|\
+        -r|--resume|--agent|--betas|--name|-n|--plugin-url|--remote-control|\
         --cloud|--environment|--teleport|\
         --file)
             COMPREPLY=()
@@ -371,7 +371,7 @@ _claude_completion() {
                                     COMPREPLY=()
                                     ;;
                                 *)
-                                    COMPREPLY=($(compgen -W "--claudeai --scope --sparse --help -h" -- "$cur"))
+                                    COMPREPLY=($(compgen -W "--claudeai --json --scope --sparse --help -h" -- "$cur"))
                                     ;;
                             esac
                             ;;
@@ -384,9 +384,12 @@ _claude_completion() {
                                     COMPREPLY=($(compgen -W "user project local" -- "$cur"))
                                     ;;
                                 *)
-                                    COMPREPLY=($(compgen -W "--scope --help -h" -- "$cur"))
+                                    COMPREPLY=($(compgen -W "--json --scope --help -h" -- "$cur"))
                                     ;;
                             esac
+                            ;;
+                        update)
+                            COMPREPLY=($(compgen -W "--json --help -h" -- "$cur"))
                             ;;
                         *)
                             COMPREPLY=($(compgen -W "--help -h" -- "$cur"))
