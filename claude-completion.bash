@@ -7,7 +7,7 @@ _claude_completion() {
     _init_completion || return
 
     # Commands
-    local commands="agents attach logs stop kill rm respawn auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview"
+    local commands="agents attach logs stop kill rm respawn auto-mode auth mcp plugin plugins purge setup-token doctor gateway import update upgrade install ultrareview"
 
     # Global options
     local global_opts="
@@ -584,27 +584,12 @@ _claude_completion() {
                     ;;
             esac
             ;;
-        project)
-            local project_cmds="purge"
-            local project_subcmd
-            for ((i=cmd_idx+1; i < cword; i++)); do
-                if [[ ${words[i]} != -* ]]; then
-                    project_subcmd=${words[i]}
-                    break
-                fi
-            done
-            case "$project_subcmd" in
-                purge)
-                    if [[ "$cur" == -* ]]; then
-                        COMPREPLY=($(compgen -W "--all --dry-run --interactive --yes --help -i -y -h" -- "$cur"))
-                    else
-                        _filedir -d
-                    fi
-                    ;;
-                *)
-                    COMPREPLY=($(compgen -W "$project_cmds --help -h" -- "$cur"))
-                    ;;
-            esac
+        purge)
+            if [[ "$cur" == -* ]]; then
+                COMPREPLY=($(compgen -W "--all --dry-run --interactive --yes --help -i -y -h" -- "$cur"))
+            else
+                _filedir -d
+            fi
             ;;
         setup-token)
             COMPREPLY=($(compgen -W "--help -h" -- "$cur"))

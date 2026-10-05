@@ -41,7 +41,7 @@ _claude() {
         'mcp:Configure and manage MCP servers'
         'plugin:Manage Claude Code plugins'
         'plugins:Manage Claude Code plugins'
-        'project:Manage Claude Code project state'
+        'purge:Delete all Claude Code state for a project'
         'setup-token:Set up a long-lived authentication token'
         'doctor:Check the health of your Claude Code installation'
         'gateway:Run the enterprise auth/telemetry gateway'
@@ -561,33 +561,14 @@ _claude() {
                             ;;
                     esac
                     ;;
-                project)
-                    local -a project_commands
-                    project_commands=(
-                        'purge:Delete all Claude Code state for a project'
-                    )
-                    _arguments -C \
+                purge)
+                    _arguments \
+                        '--all[Purge state for every project]' \
+                        '--dry-run[List what would be deleted without deleting]' \
+                        {-i,--interactive}'[Prompt for each item before deleting]' \
+                        {-y,--yes}'[Skip confirmation prompt]' \
                         {-h,--help}'[Display help for command]' \
-                        '1: :->project_cmd' \
-                        '*:: :->project_args'
-                    case $state in
-                        project_cmd)
-                            _describe -t commands 'project command' project_commands
-                            ;;
-                        project_args)
-                            case $words[1] in
-                                purge)
-                                    _arguments \
-                                        '--all[Purge state for every project]' \
-                                        '--dry-run[List what would be deleted without deleting]' \
-                                        {-i,--interactive}'[Prompt for each item before deleting]' \
-                                        {-y,--yes}'[Skip confirmation prompt]' \
-                                        {-h,--help}'[Display help for command]' \
-                                        '*: :_files -/'
-                                    ;;
-                            esac
-                            ;;
-                    esac
+                        '*: :_files -/'
                     ;;
                 setup-token)
                     _arguments \

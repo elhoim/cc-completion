@@ -172,7 +172,7 @@ After installation, you can use tab completion with the `claude` command:
 ```bash
 # Complete subcommands
 claude <TAB>
-# Shows: agents attach logs stop kill rm respawn auto-mode auth mcp plugin plugins project setup-token doctor gateway import update upgrade install ultrareview
+# Shows: agents attach logs stop kill rm respawn auto-mode auth mcp plugin plugins purge setup-token doctor gateway import update upgrade install ultrareview
 
 # Complete options
 claude --<TAB>
@@ -282,8 +282,7 @@ claude --settings <TAB>
   - `uninstall` (`remove`) - Uninstall an installed plugin (with `--json`, `--keep-data`, `--prune`, `--scope`, `--yes` options)
   - `update` - Update a plugin to the latest version (with `--accept-command`, `--json`, `--scope`, `--yes` options)
   - `validate` - Validate a plugin or marketplace manifest (with `--json`, `--strict` options)
-- `project` - Manage Claude Code project state
-  - `purge` - Delete all Claude Code state for a project (transcripts, tasks, file history, config entry) (with `--all`, `--dry-run`, `--interactive`, `--yes` options)
+- `purge` - Delete all Claude Code state for a project (transcripts, tasks, file history, config entry) (with `--all`, `--dry-run`, `--interactive`, `--yes` options)
 - `setup-token` - Set up a long-lived authentication token
 - `doctor` - Check the health of your Claude Code installation
 - `gateway` - Run the enterprise auth/telemetry gateway (with `--config` option)
