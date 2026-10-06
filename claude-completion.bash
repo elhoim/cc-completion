@@ -70,7 +70,7 @@ _claude_completion() {
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
         SendUserFile SendFile SendFeedback SendUserMessage FetchInboxMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
-        ShareOnboardingGuide ShowOnboardingRolePicker SuggestPluginInstall SuggestSkills
+        OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker SuggestPluginInstall SuggestSkills
         default
     "
 
