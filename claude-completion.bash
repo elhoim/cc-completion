@@ -70,7 +70,7 @@ _claude_completion() {
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
         SendUserFile SendFile SendFeedback SendUserMessage FetchInboxMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
-        OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker SuggestPluginInstall SuggestSkills
+        OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker PublishPlugin SuggestPluginInstall SuggestSkills
         default
     "
 
@@ -466,11 +466,14 @@ _claude_completion() {
                         -s|--scope)
                             COMPREPLY=($(compgen -W "user project local" -- "$cur"))
                             ;;
+                        --marketplace)
+                            _filedir -d
+                            ;;
                         --accept-command|--config|--registry)
                             COMPREPLY=()
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--accept-command --config --json --registry --scope --yes --help -s -y -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--accept-command --config --json --marketplace --registry --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;

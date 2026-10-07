@@ -22,7 +22,7 @@ _claude_tools() {
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects \
         SendUserFile SendFile SendFeedback SendUserMessage FetchInboxMessage EndConversation \
         ObserverReport StructuredOutput TestingPermission \
-        OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker SuggestPluginInstall SuggestSkills \
+        OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker PublishPlugin SuggestPluginInstall SuggestSkills \
         default
 }
 
@@ -494,6 +494,7 @@ _claude() {
                                         '--accept-command[Accept the marketplace-declared command whose sha256 a previous --json run reported (that plugin and marketplace catalog only)]:sha256:' \
                                         '--config[Set a userConfig option from the plugin manifest (repeatable)]:key=value:' \
                                         '--json[Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)]' \
+                                        '--marketplace[Install the plugin (bare name) from the marketplace at this source (owner/repo, git/https URL, or path)]:source:_files -/' \
                                         '--registry[For a <package>@npm install, resolve and download from this npm registry]:url:' \
                                         {-s,--scope}'[Installation scope]:scope:(user project local)' \
                                         {-y,--yes}'[Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt]' \
