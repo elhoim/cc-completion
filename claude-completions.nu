@@ -341,6 +341,7 @@ export extern "claude plugin eval" [
     --allow-tools: string@"nu-complete claude tools"        # Operator grant for gated tools (repeatable)
     --case: string                                          # Filter cases by name glob
     --concurrency(-j): int                                  # Run up to <n> agent runs at once (1-8; default 1)
+    --disallow-tools: string@"nu-complete claude tools"     # Built-in tools to keep from Claude in every case (repeatable)
     --eval-dir: path                                        # Directory (below the plugin) that holds the eval cases
     --json                                                  # Print the full run result as JSON to stdout
     --judge-model: string@"nu-complete claude models"       # Override LLM-grader model (default: haiku)
@@ -592,6 +593,7 @@ export extern "claude plugins eval" [
     --allow-tools: string@"nu-complete claude tools"        # Operator grant for gated tools (repeatable)
     --case: string                                          # Filter cases by name glob
     --concurrency(-j): int                                  # Run up to <n> agent runs at once (1-8; default 1)
+    --disallow-tools: string@"nu-complete claude tools"     # Built-in tools to keep from Claude in every case (repeatable)
     --eval-dir: path                                        # Directory (below the plugin) that holds the eval cases
     --json                                                  # Print the full run result as JSON to stdout
     --judge-model: string@"nu-complete claude models"       # Override LLM-grader model (default: haiku)

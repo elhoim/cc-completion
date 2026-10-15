@@ -401,7 +401,7 @@ _claude_completion() {
                     # `claude plugin eval --eval-dir cases init` finds `init`
                     # rather than mistaking the value `cases` for the subcommand.
                     local eval_value_flags="
-                        --ablation --allow-tools --case --concurrency -j --eval-dir --json --judge-model
+                        --ablation --allow-tools --case --concurrency -j --disallow-tools --eval-dir --json --judge-model
                         --max-cost-usd --mocks --model --output-dir --report --runs --tag --threshold
                     "
                     local _evf=" ${eval_value_flags//[$'\n\t']/ } "
@@ -451,11 +451,17 @@ _claude_completion() {
                                 --json|--report)
                                     _filedir
                                     ;;
+                                # Built-in tools only, so the names are offered
+                                # (unlike --allow-tools, which also takes mcp__* and
+                                # Tool(pattern:*) grants).
+                                --disallow-tools)
+                                    COMPREPLY=($(compgen -W "$tool_names" -- "$cur"))
+                                    ;;
                                 --case|--tag|--allow-tools|--runs|--threshold|--max-cost-usd)
                                     COMPREPLY=()
                                     ;;
                                 *)
-                                    COMPREPLY=($(compgen -W "init --ablation --allow-real-servers --allow-tools --case --concurrency --eval-dir --json --judge-model --keep-temp --max-cost-usd --mocks --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --trust-plugin --verbose --help -j -h" -- "$cur"))
+                                    COMPREPLY=($(compgen -W "init --ablation --allow-real-servers --allow-tools --case --concurrency --disallow-tools --eval-dir --json --judge-model --keep-temp --max-cost-usd --mocks --model --no-publish --no-scaffold --output-dir --publish-report --report --runs --scaffold --tag --threshold --trust-plugin --verbose --help -j -h" -- "$cur"))
                                     ;;
                             esac
                             ;;
