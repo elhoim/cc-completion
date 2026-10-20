@@ -175,7 +175,7 @@ _claude_completion() {
         --json-schema|--system-prompt|--append-system-prompt|--agents|\
         --worktree|--max-budget-usd|--session-id|--debug|-d|--from-pr|\
         -r|--resume|--agent|--betas|--name|-n|--plugin-url|--remote-control|\
-        --cloud|--environment|--teleport|\
+        --remote-control-session-name-prefix|--cloud|--environment|--teleport|\
         --file)
             COMPREPLY=()
             return 0
