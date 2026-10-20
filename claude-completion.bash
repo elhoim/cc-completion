@@ -55,7 +55,7 @@ _claude_completion() {
     # the claude release named in the commit message. Canonical names only -- the
     # older aliases (Task, BashOutput, KillShell, ...) still resolve at runtime
     # but are not offered here. "default" comes from the --tools help text
-    # ('Use "" to disable all tools, "default" to use all tools').
+    # ('Use "" to disable all tools, "default" to use the default set').
     local tool_names="
         Bash PowerShell
         Read Write Edit NotebookEdit Glob Grep LSP

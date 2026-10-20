@@ -81,7 +81,7 @@ def "nu-complete claude plugin-component" [] {
 # claude release named in the commit message. Canonical names only -- the older
 # aliases (Task, BashOutput, KillShell, ...) still resolve at runtime but are not
 # offered here. "default" comes from the --tools help text ('Use "" to disable
-# all tools, "default" to use all tools').
+# all tools, "default" to use the default set').
 def "nu-complete claude tools" [] {
     [
         Bash PowerShell
@@ -133,12 +133,12 @@ export extern claude [
     --mcp-config: path                                      # MCP config file
     --system-prompt: string                                 # System prompt
     --append-system-prompt: string                          # Append system prompt
-    --system-prompt-snapshot: string@"nu-complete claude on-off"  # Record the system prompt once per conversation and reuse it verbatim (on is the default)
+    --system-prompt-snapshot: string@"nu-complete claude on-off"  # Record the system prompt once per conversation and reuse it verbatim (on is the default except under --bare)
     --exclude-dynamic-system-prompt-sections                # Move per-machine sections to first user message (default system prompt only)
     --permission-mode: string@"nu-complete claude permission-mode"  # Permission mode
     --permission-prompts: string@"nu-complete claude permission-prompts"  # Who answers permission prompts with --print
     --continue(-c)                                          # Continue last session
-    --resume(-r): string                                    # Resume session by ID
+    --resume(-r): string                                    # Resume session by ID or name
     --fork-session                                          # Fork session
     --no-session-persistence                                # Disable session persistence
     --model: string@"nu-complete claude models"             # Model to use
@@ -155,7 +155,7 @@ export extern claude [
     --plugin-dir: path                                      # Plugin directory
     --plugin-url: string                                    # Fetch a plugin .zip from a URL for this session only
     --desktop                                               # Open in the Claude Desktop app instead of the terminal
-    --disable-slash-commands                                 # Disable all skills
+    --disable-slash-commands                                 # Disable all skills and commands
     --chrome                                                # Enable Chrome
     --no-chrome                                             # Disable Chrome
     --background                                            # Start the session as a background agent
@@ -912,12 +912,12 @@ export extern "claude import" [
 
 # --- update / upgrade ---
 
-# Check for updates and install if available
+# Check for updates and install if available; package-manager installs update through the package manager
 export extern "claude update" [
     --help(-h)
 ]
 
-# Check for updates and install if available
+# Check for updates and install if available; package-manager installs update through the package manager
 export extern "claude upgrade" [
     --help(-h)
 ]

@@ -287,7 +287,7 @@ claude --settings <TAB>
 - `doctor` - Claude Code インストールの健全性をチェック
 - `gateway` - エンタープライズ認証/テレメトリゲートウェイを実行 (`--config` オプション付き)
 - `import` - 他の AI コーディングエージェント (`codex`, `gemini`, `cursor`) の設定を Claude Code にインポート (`--dry-run`, `--yes` オプション付き)
-- `update` - アップデートを確認し、利用可能な場合はインストール
+- `update` - アップデートを確認し、利用可能な場合はインストール (パッケージマネージャーでインストールした場合はパッケージマネージャー経由で更新)
 - `plugins` - `plugin` のエイリアス
 - `upgrade` - `update` のエイリアス
 - `install` - Claude Code ネイティブビルドをインストール (`--force` オプション付き)

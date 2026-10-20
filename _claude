@@ -7,7 +7,7 @@
 # claude release named in the commit message. Canonical names only -- the older
 # aliases (Task, BashOutput, KillShell, ...) still resolve at runtime but are not
 # offered here. "default" comes from the --tools help text ('Use "" to disable
-# all tools, "default" to use all tools').
+# all tools, "default" to use the default set').
 _claude_tools() {
     compadd -- Bash PowerShell \
         Read Write Edit NotebookEdit Glob Grep LSP \
@@ -46,8 +46,8 @@ _claude() {
         'doctor:Check the health of your Claude Code installation'
         'gateway:Run the enterprise auth/telemetry gateway'
         'import:Import config from another AI coding agent into Claude Code'
-        'update:Check for updates and install if available'
-        'upgrade:Check for updates and install if available'
+        'update:Check for updates and install if available; package-manager installs update through the package manager'
+        'upgrade:Check for updates and install if available; package-manager installs update through the package manager'
         'auto-mode:Inspect or reset auto mode classifier configuration'
         'install:Install Claude Code native build'
         'ultrareview:Run a cloud-hosted multi-agent code review of the current branch'
@@ -76,12 +76,12 @@ _claude() {
         '*--mcp-config[Load MCP servers from JSON files or strings]:configs:_files'
         '--system-prompt[System prompt to use for the session]:prompt:'
         '--append-system-prompt[Append a system prompt]:prompt:'
-        '--system-prompt-snapshot[Record the system prompt once per conversation and reuse it verbatim on every request and resume (on is the default)]:mode:(on off)'
+        '--system-prompt-snapshot[Record the system prompt once per conversation and reuse it verbatim on every request and resume (on is the default except under --bare)]:mode:(on off)'
         '--exclude-dynamic-system-prompt-sections[Move per-machine sections to first user message for prompt-cache reuse (default system prompt only)]'
         '--permission-mode[Permission mode to use]:mode:(acceptEdits bypassPermissions manual dontAsk plan auto)'
         '--permission-prompts[Who answers permission prompts with --print]:target:(host none)'
         {-c,--continue}'[Continue the most recent conversation]'
-        {-r,--resume}'[Resume a conversation by session ID]::session:'
+        {-r,--resume}'[Resume a conversation by session ID or name]::session:'
         '--fork-session[Create a new session ID when resuming]'
         '--no-session-persistence[Disable session persistence]'
         '--model[Model for the current session]:model:(sonnet opus haiku fable best sonnet\[1m\] opus\[1m\] fable\[1m\] opusplan)'
@@ -99,7 +99,7 @@ _claude() {
         '*--plugin-dir[Load a plugin from a directory or .zip]:paths:_files'
         '*--plugin-url[Fetch a plugin .zip from a URL for this session only]:url:'
         '--desktop[Open in the Claude Desktop app instead of the terminal]'
-        '--disable-slash-commands[Disable all skills]'
+        '--disable-slash-commands[Disable all skills and commands]'
         '--chrome[Enable Claude in Chrome integration]'
         '--no-chrome[Disable Claude in Chrome integration]'
         '--remote-control[Start an interactive session with Remote Control enabled (optionally named)]::name:'

@@ -287,7 +287,7 @@ claude --settings <TAB>
 - `doctor` - Check the health of your Claude Code installation
 - `gateway` - Run the enterprise auth/telemetry gateway (with `--config` option)
 - `import` - Import config from another AI coding agent (`codex`, `gemini`, `cursor`) into Claude Code (with `--dry-run`, `--yes` options)
-- `update` - Check for updates and install if available
+- `update` - Check for updates and install if available; package-manager installs update through the package manager
 - `plugins` - Alias for `plugin`
 - `upgrade` - Alias for `update`
 - `install` - Install Claude Code native build (with `--force` option)
