@@ -29,6 +29,10 @@ def "nu-complete claude eval-mocks" [] {
     [record off]
 }
 
+def "nu-complete claude validate-profile" [] {
+    [directory]
+}
+
 def "nu-complete claude models" [] {
     [sonnet opus haiku fable best "sonnet[1m]" "opus[1m]" "fable[1m]" opusplan]
 }
@@ -490,9 +494,10 @@ export extern "claude plugin update" [
     ...args: string
 ]
 
-# Validate a plugin or marketplace manifest
+# Validate a plugin or marketplace manifest, or the skills, agents, and commands in a directory
 export extern "claude plugin validate" [
     --json                                                  # Output the validation report as JSON (same exit codes)
+    --profile: string@"nu-complete claude validate-profile" # Also exit 1 when the plugin directory would refuse a submission
     --strict                                                # Treat warnings as errors (exit 1)
     --help(-h)
     path: path                                              # Plugin or marketplace manifest path
@@ -742,9 +747,10 @@ export extern "claude plugins update" [
     ...args: string
 ]
 
-# Validate a plugin or marketplace manifest
+# Validate a plugin or marketplace manifest, or the skills, agents, and commands in a directory
 export extern "claude plugins validate" [
     --json                                                  # Output the validation report as JSON (same exit codes)
+    --profile: string@"nu-complete claude validate-profile" # Also exit 1 when the plugin directory would refuse a submission
     --strict                                                # Treat warnings as errors (exit 1)
     --help(-h)
     path: path                                              # Plugin or marketplace manifest path

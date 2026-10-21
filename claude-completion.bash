@@ -559,12 +559,19 @@ _claude_completion() {
                     COMPREPLY=($(compgen -W "--help -h" -- "$cur"))
                     ;;
                 validate)
-                    if [[ "$cur" == -* ]]; then
-                        COMPREPLY=($(compgen -W "--json --strict --help -h" -- "$cur"))
-                    else
-                        # <path> is a plugin/marketplace manifest or its directory.
-                        _filedir
-                    fi
+                    case "$prev" in
+                        --profile)
+                            COMPREPLY=($(compgen -W "directory" -- "$cur"))
+                            ;;
+                        *)
+                            if [[ "$cur" == -* ]]; then
+                                COMPREPLY=($(compgen -W "--json --profile --strict --help -h" -- "$cur"))
+                            else
+                                # <path> is a plugin/marketplace manifest or its directory.
+                                _filedir
+                            fi
+                            ;;
+                    esac
                     ;;
                 tag)
                     case "$prev" in
