@@ -20,7 +20,7 @@ _claude_tools() {
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools \
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors \
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects \
-        SendUserFile SendFile SendFeedback SendUserMessage FetchInboxMessage EndConversation \
+        SendUserFile SendFile SendFeedback SendUserMessage SendToProject SendToProjectContext FetchInboxMessage EndConversation \
         ObserverReport StructuredOutput TestingPermission \
         OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker PublishPlugin SuggestPluginInstall SuggestSkills \
         default
@@ -48,7 +48,7 @@ _claude() {
         'import:Import config from another AI coding agent into Claude Code'
         'update:Check for updates and install if available; package-manager installs update through the package manager'
         'upgrade:Check for updates and install if available; package-manager installs update through the package manager'
-        'auto-mode:Inspect or reset auto mode classifier configuration'
+        'auto-mode:Inspect or reset auto mode configuration'
         'install:Install Claude Code native build'
         'ultrareview:Run a cloud-hosted multi-agent code review of the current branch'
     )

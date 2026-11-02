@@ -245,7 +245,7 @@ claude --settings <TAB>
 - `stop` (`kill`) - Stop a background session, keeping its conversation
 - `rm` - Delete a background session, and its worktree when that is safe (with `--discard-unpushed`, `--force-remove-worktree` options)
 - `respawn` - Restart a background session so it runs the current Claude Code version (with `--all` option)
-- `auto-mode` - Inspect or reset auto mode classifier configuration
+- `auto-mode` - Inspect or reset auto mode configuration
   - `config` - Print the effective auto mode config as JSON
   - `critique` - Get AI feedback on your custom auto mode rules (with `--model` option)
   - `defaults` - Print the default auto mode environment, allow, soft_deny, and hard_deny rules as JSON (with `--label` option)

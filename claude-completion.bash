@@ -68,7 +68,7 @@ _claude_completion() {
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
-        SendUserFile SendFile SendFeedback SendUserMessage FetchInboxMessage EndConversation
+        SendUserFile SendFile SendFeedback SendUserMessage SendToProject SendToProjectContext FetchInboxMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
         OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker PublishPlugin SuggestPluginInstall SuggestSkills
         default

@@ -245,7 +245,7 @@ claude --settings <TAB>
 - `stop` (`kill`) - バックグラウンドセッションを停止 (会話は保持される)
 - `rm` - バックグラウンドセッションを削除 (安全な場合はワークツリーも削除。`--discard-unpushed`, `--force-remove-worktree` オプション付き)
 - `respawn` - バックグラウンドセッションを再起動して現在の Claude Code バージョンで動かす (`--all` オプション付き)
-- `auto-mode` - 自動モード分類器の設定を確認・リセット
+- `auto-mode` - 自動モードの設定を確認・リセット
   - `config` - 有効な自動モード設定を JSON で出力
   - `critique` - カスタム自動モードルールに対する AI のフィードバックを取得 (`--model` オプション付き)
   - `defaults` - 自動モードの environment / allow / soft_deny / hard_deny のデフォルトルールを JSON で出力 (`--label` オプション付き)

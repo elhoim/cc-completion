@@ -99,7 +99,7 @@ def "nu-complete claude tools" [] {
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
-        SendUserFile SendFile SendFeedback SendUserMessage FetchInboxMessage EndConversation
+        SendUserFile SendFile SendFeedback SendUserMessage SendToProject SendToProjectContext FetchInboxMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
         OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker PublishPlugin SuggestPluginInstall SuggestSkills
         default
@@ -939,7 +939,7 @@ export extern "claude install" [
 
 # --- auto-mode ---
 
-# Inspect or reset auto mode classifier configuration
+# Inspect or reset auto mode configuration
 export extern "claude auto-mode" [
     --help(-h)
     ...args: string
