@@ -88,15 +88,15 @@ def "nu-complete claude plugin-component" [] {
 # all tools, "default" to use the default set').
 def "nu-complete claude tools" [] {
     [
-        Bash PowerShell
+        Bash PowerShell REPL
         Read Write Edit NotebookEdit Glob Grep LSP
         WebFetch WebSearch
         Agent ListAgents Skill SendMessage SubagentHandback Workflow ToolSearch
         TaskCreate TaskGet TaskList TaskStop TaskUpdate GetTask
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications Poll
         EnterWorktree ExitWorktree
-        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal
-        ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools
+        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal WrapUp
+        ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools ReadWidgetContext
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
         SendUserFile SendFile SendFeedback SendUserMessage SendToProject SendToProjectContext FetchInboxMessage EndConversation
