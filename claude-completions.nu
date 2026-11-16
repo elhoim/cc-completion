@@ -102,6 +102,7 @@ def "nu-complete claude tools" [] {
         SendUserFile SendFile SendFeedback SendUserMessage SendToProject SendToProjectContext FetchInboxMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
         OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker PublishPlugin SuggestPluginInstall SuggestSkills
+        ListPlugins ListSkills SearchPlugins SearchSkills Yield
         default
     ]
 }
@@ -405,7 +406,6 @@ export extern "claude plugin install" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --marketplace: string                                   # Install the plugin (bare name) from the marketplace at this source (owner/repo, git/https URL, or path)
-    --registry: string                                      # For a <package>@npm install, resolve and download from this npm registry
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -533,7 +533,6 @@ export extern "claude plugin i" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --marketplace: string                                   # Install the plugin (bare name) from the marketplace at this source (owner/repo, git/https URL, or path)
-    --registry: string                                      # For a <package>@npm install, resolve and download from this npm registry
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -665,7 +664,6 @@ export extern "claude plugins install" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --marketplace: string                                   # Install the plugin (bare name) from the marketplace at this source (owner/repo, git/https URL, or path)
-    --registry: string                                      # For a <package>@npm install, resolve and download from this npm registry
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)
@@ -793,7 +791,6 @@ export extern "claude plugins i" [
     --config: string                                        # Set a userConfig option from the plugin manifest (repeatable)
     --json                                                  # Print one machine-readable result line instead of the human message (a marketplace-declared command must still be confirmed)
     --marketplace: string                                   # Install the plugin (bare name) from the marketplace at this source (owner/repo, git/https URL, or path)
-    --registry: string                                      # For a <package>@npm install, resolve and download from this npm registry
     --scope(-s): string@"nu-complete claude scope"
     --yes(-y)                                               # Accept the displayed marketplace-declared command (install or headersHelper) without the confirmation prompt
     --help(-h)

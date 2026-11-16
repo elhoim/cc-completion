@@ -71,6 +71,7 @@ _claude_completion() {
         SendUserFile SendFile SendFeedback SendUserMessage SendToProject SendToProjectContext FetchInboxMessage EndConversation
         ObserverReport StructuredOutput TestingPermission
         OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker PublishPlugin SuggestPluginInstall SuggestSkills
+        ListPlugins ListSkills SearchPlugins SearchSkills Yield
         default
     "
 
@@ -475,11 +476,11 @@ _claude_completion() {
                         --marketplace)
                             _filedir -d
                             ;;
-                        --accept-command|--config|--registry)
+                        --accept-command|--config)
                             COMPREPLY=()
                             ;;
                         *)
-                            COMPREPLY=($(compgen -W "--accept-command --config --json --marketplace --registry --scope --yes --help -s -y -h" -- "$cur"))
+                            COMPREPLY=($(compgen -W "--accept-command --config --json --marketplace --scope --yes --help -s -y -h" -- "$cur"))
                             ;;
                     esac
                     ;;
