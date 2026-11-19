@@ -95,7 +95,7 @@ def "nu-complete claude tools" [] {
         TaskCreate TaskGet TaskList TaskStop TaskUpdate GetTask
         Monitor CronCreate CronDelete CronList ScheduleWakeup RemoteTrigger PushNotification ReadNotifications Poll
         EnterWorktree ExitWorktree
-        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings ProposeGoal WrapUp
+        TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings SetGoal GetGoal PauseGoal WrapUp
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools ReadWidgetContext
         SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
