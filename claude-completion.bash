@@ -66,10 +66,10 @@ _claude_completion() {
         EnterWorktree ExitWorktree
         TodoWrite AskUserQuestion EnterPlanMode ExitPlanMode ReportFindings SetGoal GetGoal PauseGoal WrapUp
         ListMcpResourcesTool ReadMcpResourceTool ReadMcpResourceDirTool RefreshMcpTools ReadWidgetContext
-        SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors
+        SearchMcpRegistry WaitForMcpServers ListConnectors SuggestConnectors McpTaskCheck McpTaskResumePolling McpTaskShowQuestion
         AppifactRepl Artifact ArtifactCheck ArtifactComments ArtifactData ClaudeDesign DesignSync Projects
         SendUserFile SendFile SendFeedback SendUserMessage SendToProject SendToProjectContext FetchInboxMessage EndConversation
-        ObserverReport StructuredOutput TestingPermission
+        ObserverReport StructuredOutput
         OfferChromeSetup ShareOnboardingGuide ShowOnboardingRolePicker PublishPlugin SuggestPluginInstall SuggestSkills
         ListPlugins ListSkills SearchPlugins SearchSkills Yield
         default
